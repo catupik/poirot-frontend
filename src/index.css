@@ -1,0 +1,1085 @@
+@import "~leaflet/dist/leaflet.css";
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+body{
+  background-color: #182326;
+  color: white;
+  padding-top: 8rem;
+  font-family: "Poiret One", sans-serif;
+  padding-bottom: 4rem;
+  }
+
+  /* NAVIGATION */
+  .nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center; 
+    position: fixed; 
+  top: 0; 
+  left: 0;
+  width: 100%; 
+  background-color: rgba(24, 35, 38, 0.849); 
+  z-index: 2000; 
+  
+  }
+
+  .nav-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+  }
+  .poirot-title {
+    font-family: "Poiret One", sans-serif;
+    color: transparent;
+    background-image: linear-gradient(45deg, #cdaa5f, #d4af37, 
+    #fff684, #d4af37);
+    background-clip: text;
+    text-decoration: none;
+    animation: gold-flicker 1.5s linear infinite;
+    transition: transform 0.3s ease;
+    font-size: 3rem;
+    flex: 0 0 auto; 
+    top: -1rem;
+  
+  }
+
+  .Link {
+    font-family: "Poiret One", sans-serif;
+    color: transparent;
+    background-image: linear-gradient(45deg, #cdaa5f, #d4af37, 
+    #fff684, #d4af37);
+    -webkit-background-clip: text;
+    background-clip: text;
+    text-decoration: none;
+    display: inline-block;
+    animation: gold-flicker 1.5s linear infinite;
+    align-items: center;
+    transition: transform 0.3s ease;
+    font-size: 1rem;
+  }
+  .Link:hover {
+    transform: scale(1.1);
+  }
+  .activeLink {
+    border: 1px solid gold; 
+    padding: 1rem;
+  }
+
+  .Link, .activeLink {
+    box-sizing: border-box; 
+  padding: 10px; 
+  }
+  
+  @keyframes gold-flicker {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+
+  .poirotLink {
+    font-size: 4rem;
+    flex: 0 0 auto; 
+    text-align: center;
+  }  
+
+  .motto {
+    color: rgb(255, 0, 0);
+    font-weight: bold;
+  }
+
+
+/* HOME */
+
+
+.greeting{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  align-items: center;
+  padding: 2rem;
+}
+
+.poirot img {
+  
+  width: 200px; 
+  height: 300px; 
+  
+}
+
+.hello {
+  margin-top: 5rem;
+  
+}
+.greeting p {
+  width: 40%;
+  
+  align-self: center;
+  text-align: center;
+  text-align: justify;
+ 
+}
+
+.greeting p, .whyMe p, .about-section p {
+  font-size: 1rem; 
+  text-align: justify;
+}
+
+.icon-mousetach, .delete-icon, .send-icon, .burger-icon  {
+  filter: invert(80%) sepia(50%) saturate(4000%) hue-rotate(-30deg) brightness(150%) contrast(50%);
+}
+.reason{
+  display: flex;
+}
+
+
+.whyMe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
+  margin: auto;
+  color: #e2e2e2;
+}
+
+.whyMe h2 {
+  text-align: center;
+  margin-bottom: 30px; 
+  color: #96783e;
+}
+
+.whyMe .reason {
+  display: flex; 
+  align-items: center;
+  margin-bottom: 15px; 
+}
+
+.whyMe .reason h3 {
+ 
+  color: #96783e;
+}
+
+.whyMe p {
+  text-align: justify; 
+  margin-bottom: 20px; 
+}
+
+.icon-mousetach  {
+  filter: invert(80%) sepia(50%) saturate(4000%) hue-rotate(-30deg) brightness(150%) contrast(50%);
+}
+.icon-mousetach {
+  transition: transform 0.3s ease; 
+}
+
+.icon-mousetach:hover {
+  transform: scale(1.1); 
+}
+.conclusion {
+  text-align: justify;
+  color: #96783e;
+}
+
+/* ABOUT */
+
+.about-container {
+  padding: 2rem;
+}
+
+.about-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+}
+
+
+.about-section img {
+  max-width: 100%;
+  height: auto;
+  padding: 1rem;
+ 
+  border: 3px solid transparent;
+ border-image-source: linear-gradient(45deg, #cdaa5f, #d4af37, #cdaa5f, #d4af37);
+  border-image-slice: 1;
+  border-image-repeat: stretch;
+}
+
+.about-section p {
+ 
+  font-size: 1rem;
+ align-self: center;
+ text-align: justify;
+ padding: 4rem;
+ width: 30%;
+}
+
+.definder {
+  display: flex;
+  justify-content: center;
+  
+}
+.definder img {
+ -webkit-filter: sepia(0.8) brightness(1.2) saturate(1.5) hue-rotate(-25deg);
+  filter: sepia(0.7) brightness(1.2) saturate(1.9) hue-rotate(-15deg);
+  margin: 5rem;
+  height: 5rem;
+ 
+}
+
+/* BUTTONS */
+.btn {
+  font-family: "Poiret One", sans-serif;
+  background: none;
+  border:gold 1px solid;
+  color: white;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  width:40%;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+}
+.message-icons{
+  display: flex;
+  padding-top: 1rem;
+}
+.send-icon {
+  align-self: flex-start;
+  margin: 0rem 2rem;
+}
+
+
+/* CASES */
+
+.cases-container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  padding: 2rem;
+}
+
+.intro-text {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  max-width: 800px;
+  text-align: justify;
+}
+
+.case-title {
+  font-size: 24px;
+  color: #96783e;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.case-image-set {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0;
+}
+.case-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border: 2px solid transparent;
+  border-image-source: linear-gradient(45deg, #cdaa5f, #d4af37, #cdaa5f, #d4af37);
+  border-image-slice: 1;
+  border-image-repeat: stretch;
+  padding: 1rem;
+
+}
+ .case {
+  display: flex;
+ }
+
+.case-description {
+  font-size: 16px;
+  max-width: 800px;
+  text-align: justify;
+  
+}
+
+.arrowbtn {
+  height: 30px;
+width: 30px;
+align-self: center;
+
+filter: invert(80%) sepia(50%) saturate(4000%) hue-rotate(-30deg) brightness(150%) contrast(50%);
+transition: transform 0.3s ease;
+cursor: pointer;
+padding: 1rem;
+}
+.arrowbtn:hover{
+  transform: scale(1.2);
+}
+
+.map-case-name{
+  color: #cdaa5f;
+}
+/* CONTACT */
+
+#bookingForm {
+  border: 1px solid #cdaa5f;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+
+}
+
+#name, #case, #email {
+  background-color: transparent;
+  border: 1px solid #cdaa5f;
+  color: white;
+  padding: 1rem;  
+}
+
+#case{
+  height: 5rem
+}
+.radio {
+  display: flex;
+  justify-content: center;
+}
+.btn.case {
+  width: 100%; 
+  padding: 10px 0;
+  text-align: center;
+  display: block;
+}
+
+/* CONTACT */
+
+
+#bookingForm input[type="text"],
+#bookingForm input[type="email"],
+#bookingForm select,
+#bookingForm textarea {
+  font-family: "Poiret One", sans-serif;
+  width: 100%; 
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #cdaa5f;
+  background-color: transparent;
+  color: white;
+}
+
+
+.social {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  flex-wrap: wrap;
+}
+.socialicon {
+  padding: 1.5rem;
+}
+.social a[data-tooltip] {
+  position: relative;
+  display: inline-block;
+}
+
+.social a[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  padding: 5px 10px;
+  background-color: #111a20;
+  color: white;
+  font-size: 14px;
+  border-radius: 4px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+  z-index: 5;
+}
+
+.social a:hover[data-tooltip]::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+#service, .custom-select {
+  background-color: transparent; 
+  color: white; 
+  border: 1px solid gold;
+  padding: 0.5rem; 
+  margin-bottom: 1rem; 
+  width: 100%; 
+  box-sizing: border-box; 
+  cursor: pointer; 
+}
+#service::-ms-expand, .custom-select::-ms-expand {
+  display: none; 
+}
+
+.service img {
+  padding: 1rem;
+ 
+  border: 3px solid transparent;
+ border-image-source: linear-gradient(45deg, #cdaa5f, #d4af37, #cdaa5f, #d4af37);
+  border-image-slice: 1;
+  border-image-repeat: stretch;
+}
+
+#service option, .custom-select option {
+  background-color: #182326; 
+  color: white; 
+  
+}
+option {
+  font-family: "Poiret One", sans-serif;
+}
+#service:hover, #service:focus {
+  border-color: #fff684; 
+}
+#service:active, #service:checked {
+  border-color: #d4af37; 
+}
+.radio {
+  display: flex;
+  flex-direction: column; 
+  margin-bottom: 15px;
+}
+.radio input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+
+.radio label {
+  cursor: pointer;
+  padding: 0.5rem 1rem; 
+  border: 1px solid gold; 
+  margin-right: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+.radio input[type="radio"]:checked + label {
+  background-color: #cdaa5f; 
+  color: black; 
+}
+
+.radio label:hover {
+  background-color: #d4af37; 
+  color: black; 
+}
+
+.strong {
+  color: #cdaa5f;
+}
+
+/* MODAL */
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  background-color: #182326; 
+  padding: 20px;
+  text-align: center;
+  border: 2px solid #d4af37; 
+  color: white; }
+
+.close-button {
+  
+  color: #d4af37; 
+  float: right;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #182326;
+  border: 1px solid #d4af37; 
+  padding: 0.5rem;
+}
+
+.modal-text{
+  color: white; 
+}
+
+
+.modal-content .btn {
+  border: 1px solid #d4af37; 
+  color: white; 
+  
+}
+
+/* SERVICES */
+.allServices {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px; 
+}
+
+.service-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px; 
+  margin: 1rem;
+  justify-content: space-between;
+}
+
+.service {
+  
+  padding: 1rem;
+  width: 100%;
+  min-height: 250px;
+}
+.service p {
+  text-align: justify;
+}
+.service-btn {
+  text-transform: uppercase;
+  font-family: "Poiret One", sans-serif;
+  font-weight: bold;
+  width: 80%; 
+  margin-top: auto;
+  background-color: transparent;
+  color: white;
+  border: 1px solid gold;
+  padding: 0.5rem;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.service-btn:active, .btn:active{
+  transform: scale(0.9); 
+  background-color: #d4af37; 
+  color: #182326; 
+}
+
+.change-quantity-container {
+  width: 100%;
+  margin-top: auto; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.change-quantity {
+  padding: 1rem;
+}
+ 
+.change-block {
+  display: flex;
+ align-items: center;
+}
+  .service-btn:hover {
+    transform: scale(1.1);
+  }
+
+  /* CATEGORY SERVICE*/
+  .allCategories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    
+  }
+
+  .category, .selectedCategory {
+    padding: 5px 10px;
+     
+  }
+
+  #categorySelect{
+    font-family: "Poiret One", sans-serif;
+    font-weight: bold;
+  }
+
+  .selectedCategory {
+    border: 1px solid gold;
+    padding: 1rem;
+  }
+
+  .category{
+    padding: 1rem;
+
+  }
+
+  .category:hover {
+    border: 1px solid gold;
+    
+  }
+
+
+
+  /* ACCOUNT */
+ 
+
+.account-container {
+  background-color: #182326; 
+  color: white; 
+  padding: 20px; 
+  border-radius: 10px; 
+
+}
+
+.user-info {
+  color: #cdaa5f; 
+  margin-bottom: 20px; 
+
+}
+
+.user-info strong {
+  color: #fff684; 
+
+}
+
+
+.user-pic {
+  width: 200px; 
+  border-radius: 50%; 
+  border: 2px solid #d4af37; 
+  margin-bottom: 20px;
+}
+
+
+.messages-list {
+  list-style-type: none; 
+  padding: 0; 
+}
+
+.messages-list li {
+  border-bottom: 1px solid #cdaa5f; 
+  padding: 10px 0; 
+}
+
+
+.delete-icon,
+.send-icon {
+  cursor: pointer; 
+  transition: transform 0.3s ease; 
+}
+
+.delete-icon:hover,
+.send-icon:hover {
+  transform: scale(1.1);
+}
+
+.account-container p, .account-container img {
+  margin-left: 3rem;
+  
+}
+
+.accInfo{
+ margin-top: 2rem;
+}
+/* Cart */
+
+.cart-container {
+  background-color: #182326; 
+  color: white; 
+  padding: 20px; 
+  border-radius: 10px;
+  margin: 20px; 
+}
+
+.cart-title {
+  color: #cdaa5f; 
+  margin-bottom: 15px; 
+}
+.cart-item {
+  border-bottom: 1px solid #cdaa5f; 
+  padding: 15px 0;
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+}
+
+.cart-item img {
+  width: 100px; 
+  border-radius: 10px;
+  margin-right: 20px; 
+}
+
+.cart-item-info {
+  flex-grow: 1; 
+}
+
+.cart-item-remove {
+  cursor: pointer; 
+  transition: transform 0.3s ease; 
+}
+
+.cart-item-remove:hover {
+  transform: scale(1.1); 
+}
+.delete-icon.cart-item-remove {
+  width: 30px; 
+}
+/* MAP */
+.leaflet-popup-content-wrapper {
+  background-color: #182326; 
+  color: white; 
+  border-radius: 0px; 
+  border: 2px solid #cdaa5f; 
+}
+
+.leaflet-popup-tip {
+  background-color: #182326;
+}
+
+.leaflet-popup-content {
+  padding: 0px; 
+  font-family: "Poiret One", sans-serif;
+}
+
+/* BURGER MENU */
+.navburger {
+  display: none;
+  
+  justify-content: space-between; 
+  align-items: center; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #182326b9; 
+  z-index: 2000;
+  padding: 2rem; 
+  
+}
+
+.poirot-title {
+  position: absolute;
+  left: 0; 
+  margin-left: 10px; 
+  top: -3rem;
+
+}
+
+.burger-icon {
+  display: none;
+  cursor: pointer;
+  width: 40px;
+  position: absolute;
+  right: 4.5rem; 
+  top: 10px;
+  z-index: 2001; 
+}
+
+.nav-links {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  flex-direction: column;
+  background-color: rgba(24, 35, 38, 0.9); 
+  align-items: center;
+  justify-content: center;
+  padding-top: 4rem; 
+  z-index: 2000;
+}
+
+.nav-links a {
+  display: block;
+  padding: 15px;
+  text-align: center;
+  color: white; 
+  text-decoration: none; 
+  width: 100%;
+  border-bottom: 1px solid #cdaa5f; 
+}
+
+.nav-links a:hover {
+  background-color: #d4af37; 
+}
+
+.PoirotMap {
+  z-index: 100;
+}
+
+/* FOOTER */
+
+.footer {
+  position: fixed; 
+  bottom: 0; 
+  left: 0; 
+  width: 100%; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+  background-color: rgba(24, 35, 38, 0.849); 
+  padding: 0;
+  z-index: 1000; 
+  text-align: center;
+  
+}
+
+.footer p {
+  color: #96783e;
+}
+
+   /* --------------------------------- MEDIA -------------------------- */
+
+@media all and (max-width: 800px){
+  
+/* HOME */
+
+.greeting {
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.greeting p {
+  width: 100%;
+  
+  margin-top: 2rem;
+}
+
+.poirotImage {
+  
+  width: 200px; 
+  height: auto;
+}
+
+.whyMe{
+  width: 100%;
+}
+
+.whyMe .reason {
+  flex-direction: column; 
+  align-items: center;
+}
+
+ .whyMe p {
+  text-align: justify;
+  
+}
+
+.reason h3 {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+
+.icon-mousetach {
+  margin-bottom: 0.5rem; 
+}
+
+.motto {
+  position: absolute;
+  left: 0; 
+  margin-top: 1rem;
+  margin-left: 13px; 
+
+  
+}
+
+
+
+  /* ABOUT */
+  .about-section {
+    flex-direction: column;
+    text-align: center;
+   
+  }
+
+  .definder img {
+    width: 80%; 
+    height: 3rem;
+    margin: 2rem
+  }  
+  
+  .about-section p {padding: 0;
+  width: 100%}
+  .account-container {
+    padding: 10px; 
+  }
+
+
+  .user-pic {
+    width: 100px; 
+  }
+
+  .cart-container {
+    padding: 10px;
+  }
+
+  .cart-item {
+    flex-direction: column; 
+    align-items: start; 
+  }
+
+  .cart-item img {
+    width: 80px; 
+    margin-bottom: 10px; 
+  }
+
+
+ 
+  .btn {
+    width: 100%;
+    padding: 10px 0; 
+  }
+  .near-picture {
+    margin-bottom: 1rem;
+  }
+
+  /* CASE */
+  .case-image-set {
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 0rem;
+  }
+
+  .arrowbtn {
+   
+    padding: 2;
+  }
+
+  .case-title {
+    font-size: 20px;
+    margin-bottom: 1rem; 
+    text-align: center;
+    
+  }
+  
+/* SERVICES */
+/* CATEGORY SERVICE*/
+.allCategories {
+ display: flex;
+ flex-direction: column;
+  justify-content: column;
+  align-items: center;
+  
+}
+
+
+ .selectedCategory {
+  padding: 0;
+  
+}
+.selectedCategory {
+  outline: 1px solid gold;
+  padding: 1rem;
+}
+.category{
+  padding: 0;
+}
+
+.category:hover {
+  outline: 1px solid gold;
+  
+}
+
+
+
+
+
+  /* contact */
+
+  .social {
+    padding: 0;
+  }
+
+  .socialicon {
+    
+    width: 25px; 
+  }
+
+  .intro-text p {
+    font-size: 1rem; 
+    margin-bottom: 20px;}
+
+  
+  #bookingForm {
+    width: 75%;
+  }
+
+  #bookingForm input[type="text"],
+  #bookingForm input[type="email"],
+  #bookingForm select,
+  #bookingForm textarea {
+    padding: 8px;
+  }
+
+ 
+  #bookingForm label, .btn.case {
+    font-size: 14px;
+  }
+
+  
+  .modal-content {
+    width: 90%; 
+    padding: 20px;
+  }
+
+  /* BURGER */
+ .nav {
+  display: none;
+ }
+  .navburger {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .burger-icon {
+    display: block; 
+  }
+  
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  body {
+    padding-top: 3rem;
+  }
+
+  .greeting p, .whyMe p, .about-section p {
+    font-size: 1rem;
+  }
+
+  .poirotImage{
+    margin-top: 6rem;
+    margin-left: auto;
+    margin-right: auto;;
+   
+  }
+}

@@ -1,0 +1,16 @@
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #182326; /* Пример цвета фона */
+    z-index: 1000; /* Убедитесь, что loader находится поверх других элементов */
+  }
+  
+  #moustache {
+    filter: invert(80%) sepia(50%) saturate(4000%) hue-rotate(-30deg) brightness(150%) contrast(50%);
+  }
