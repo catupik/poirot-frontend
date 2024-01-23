@@ -142,6 +142,7 @@ body{
 
 .icon-mousetach, .delete-icon, .send-icon, .burger-icon  {
   filter: invert(80%) sepia(50%) saturate(4000%) hue-rotate(-30deg) brightness(150%) contrast(50%);
+  -webkit-tap-highlight-color: transparent;
 }
 .reason{
   display: flex;
