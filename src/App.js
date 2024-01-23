@@ -76,7 +76,7 @@ function App() {
             console.log(cartData)
             dispatch(updateCartFromLocalStorage(cartData));
           } else if (response.status === 404) {
-            // Пользователь не найден, создаем пользователя с корзиной
+            
             const createCartResponse = await fetch(`${MY_URL}/cart/create`, {
               method: 'POST',
               headers: {
