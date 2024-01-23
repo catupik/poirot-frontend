@@ -814,7 +814,7 @@ option {
   position: absolute;
   top: -2.5rem; 
   right: 2.5rem;
-  background-color: red;
+  background-color: rgb(208, 12, 28);
   color: white;
   border-radius: 50%;
   padding: 0.25em 0.25em;
