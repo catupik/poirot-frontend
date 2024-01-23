@@ -235,11 +235,10 @@ const PoirotMap = () => {
         scrollWheelZoom={false}
         style={{ height: "400px", width: "100%" }}
       >
-        <TileLayer
-        // ?key=6839e759-b69d-4cf6-b5ff-17dfdd1e4173
-          url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
-          attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
-        />
+       <TileLayer
+  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+  attribution='&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+/>
 
         {investigations.map((place) => (
           <Marker
