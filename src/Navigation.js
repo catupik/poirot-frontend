@@ -7,7 +7,7 @@ const Navigation = ({ isMenuOpen, toggleMenu, isAuthenticated, loginWithRedirect
         toggleMenu();
     };
     const totalItems = useSelector(getTotalItems);
-    console.log(totalItems)
+    
     return (
         <nav className="navburger">
             <div>

@@ -71,9 +71,9 @@ function App() {
         if (user && user.sub && isAuthenticated) {
           const response = await fetch(`${MY_URL}/cart/${user.sub}`);
           if (response.ok) {
-            console.log("User has a cart");
+            // console.log("User has a cart");
             const cartData = await response.json()
-            console.log(cartData)
+            // console.log(cartData)
             dispatch(updateCartFromLocalStorage(cartData));
           } else if (response.status === 404) {
             
@@ -85,7 +85,7 @@ function App() {
               body: JSON.stringify({ userId: user.sub }),
             });
             if (createCartResponse.ok) {
-              console.log('User created now and has an empty cart');
+              // console.log('User created now and has an empty cart');
             } else {
               console.error('Error creating user cart:', createCartResponse.statusText);
             }

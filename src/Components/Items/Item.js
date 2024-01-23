@@ -28,7 +28,7 @@ const Item = ({ item }) => {
 
         if(response.ok){
           dispatch(addItemToCart({ item, quantity }));
-        console.log('Item added to database and cart successfully');
+        
         } else{
           console.error('Failed to add item to database');
         }

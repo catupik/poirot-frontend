@@ -20,7 +20,7 @@ const PoirotMap = () => {
   });
   const handleMarkerClick = (investigation) => {
     setSelectedInvestigation(investigation);
-    console.log("Marker clicked:", investigation);
+    
   };
 
   const investigations = [

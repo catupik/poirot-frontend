@@ -7,8 +7,8 @@
     position: fixed;
     top: 0;
     left: 0;
-    background: #182326; /* Пример цвета фона */
-    z-index: 1000; /* Убедитесь, что loader находится поверх других элементов */
+    background: #182326;
+    z-index: 1000; 
   }
   
   #moustache {
