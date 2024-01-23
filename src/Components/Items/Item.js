@@ -19,7 +19,7 @@ const Item = ({ item }) => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          userId: user?.sub, // Используйте user?.sub для получения userId
+          userId: user?.sub,
           itemId: item.id,
           quantity: quantity,
           totalPrice: item.price * quantity,
