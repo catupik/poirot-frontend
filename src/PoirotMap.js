@@ -236,7 +236,8 @@ const PoirotMap = () => {
         style={{ height: "400px", width: "100%" }}
       >
         <TileLayer
-          url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png?key=6839e759-b69d-4cf6-b5ff-17dfdd1e4173"
+        // ?key=6839e759-b69d-4cf6-b5ff-17dfdd1e4173
+          url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
           attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
         />
 
