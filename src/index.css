@@ -144,6 +144,11 @@ body{
   filter: invert(80%) sepia(50%) saturate(4000%) hue-rotate(-30deg) brightness(150%) contrast(50%);
   -webkit-tap-highlight-color: transparent;
 }
+
+.icon-mousetach:active, .delete-icon:active, .send-icon:active, .burger-icon:active,
+.icon-mousetach:focus, .delete-icon:focus, .send-icon:focus, .burger-icon:focus {
+  filter: invert(80%) sepia(50%) saturate(4000%) hue-rotate(-30deg) brightness(150%) contrast(50%);
+}
 .reason{
   display: flex;
 }
