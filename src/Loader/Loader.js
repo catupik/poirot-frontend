@@ -15,8 +15,8 @@ const Loader = ()=>{
       }, []);
 
     return(
-        <div class="loader-container">
-  <div class="loader">
+        <div className="loader-container">
+  <div className="loader">
     <img id='moustache' src='/poirot/mousetach.png' alt='moustache' width='60'/>
   </div>
 </div>

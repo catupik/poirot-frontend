@@ -1,10 +1,13 @@
 import { NavLink } from "react-router-dom";
+import { useSelector } from 'react-redux';
+import { getTotalItems } from "./redux/cartSlice";
 
 const Navigation = ({ isMenuOpen, toggleMenu, isAuthenticated, loginWithRedirect, handleLogOut }) => {
     const handleLinkClick = () => {
         toggleMenu();
     };
-
+    const totalItems = useSelector(getTotalItems);
+    console.log(totalItems)
     return (
         <nav className="navburger">
             <div>
@@ -12,7 +15,10 @@ const Navigation = ({ isMenuOpen, toggleMenu, isAuthenticated, loginWithRedirect
                   <p className="poirot-title">POIROT</p>
                   <h6 className="motto">Method. Order. And little grey cells</h6> 
                 </div>
-                <img onClick={toggleMenu} className="burger-icon" src="/poirot/detective.png" alt="Menu Icon"/>
+                <div className="icon-with-badge">
+                    <img onClick={toggleMenu} className="burger-icon" src="/poirot/detective.png" alt="Menu Icon"/>
+                    {totalItems > 0 && <span className="badge">{totalItems}</span>}
+                    </div>
             </div>
             
             <div className={isMenuOpen ? "nav-links active" : "nav-links"}>

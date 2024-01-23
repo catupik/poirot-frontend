@@ -45,6 +45,9 @@ export const getTotalPrice = (state) => {
   }, 0);
 };
 
+export const getTotalItems = (state) => {
+  return state.cart.cartItems.reduce((total, item)=> total + item.quantity, 0)
+};
 export const getCartItems = (state) => state.cart.cartItems;
 export const { addItemToCart, removeItemFromCart, updateCartFromLocalStorage, updateCartFromDatabase } =
   cartSlice.actions;

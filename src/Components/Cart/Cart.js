@@ -8,7 +8,6 @@ const Cart = () => {
   const totalPrice = useSelector(getTotalPrice);
 
 
-
   return (
     <div className="cart-container">
       {cartItems.length === 0 ? (
