@@ -13,7 +13,7 @@ const AllItemsCategories = () => {
     "Accessories",
   ]
   return (
-    // You can now use the 'categories' array in your JavaScript code.
+  
 
     <div className="allItemsCategories">
       <ItemsFilter categories={categories}/>
