@@ -441,7 +441,7 @@ padding: 1rem;
 }
 
 .service img {
-  
+  box-sizing: border-box;
  padding: 1rem;
   border: 3px solid transparent;
  border-image-source: linear-gradient(45deg, #cdaa5f, #d4af37, #cdaa5f, #d4af37);
