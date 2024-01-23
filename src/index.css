@@ -140,13 +140,13 @@ body{
   text-align: justify;
 }
 
-.icon-mousetach, .delete-icon, .send-icon, .burger-icon  {
+.icon-mousetach, .delete-icon, .send-icon, .burger-icon, #moustache  {
   filter: invert(80%) sepia(50%) saturate(4000%) hue-rotate(-30deg) brightness(150%) contrast(50%);
   -webkit-tap-highlight-color: transparent;
 }
 
 .icon-mousetach:active, .delete-icon:active, .send-icon:active, .burger-icon:active,
-.icon-mousetach:focus, .delete-icon:focus, .send-icon:focus, .burger-icon:focus {
+.icon-mousetach:focus, .delete-icon:focus, .send-icon:focus, .burger-icon:focus, #moustache{
   filter: invert(80%) sepia(50%) saturate(4000%) hue-rotate(-30deg) brightness(150%) contrast(50%);
 }
 .reason{
@@ -200,6 +200,7 @@ body{
   text-align: justify;
   color: #96783e;
 }
+
 
 /* ABOUT */
 
@@ -264,7 +265,7 @@ body{
 }
 
 .btn:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 .message-icons{
   display: flex;
@@ -1078,12 +1079,12 @@ option {
 
  
   #bookingForm label, .btn.case {
-    font-size: 14px;
+    font-size: 1rem;
   }
 
   
   .modal-content {
-    width: 90%; 
+    width: 100%; 
     padding: 20px;
   }
 
