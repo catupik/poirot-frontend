@@ -473,6 +473,10 @@ padding: 1rem;
   border-image-repeat: stretch;
 }
 
+.service h3{
+  color: #cdaa5f;
+}
+
 #service option, .custom-select option {
   background-color: #182326; 
   color: white; 
@@ -629,6 +633,10 @@ option {
   display: flex;
  align-items: center;
 }
+
+.change-block p {
+   font-weight: bold;
+}
   .service-btn:hover {
     transform: scale(1.1);
   }
@@ -731,7 +739,7 @@ option {
 .accInfo{
  margin-top: 2rem;
 }
-/* Cart */
+/* CART */
 
 .cart-container {
   background-color: #182326; 
@@ -988,6 +996,7 @@ option {
   .user-pic {
     width: 100px; 
   }
+  /* CART */
 
   .cart-container {
     padding: 10px;
@@ -1001,6 +1010,14 @@ option {
   .cart-item img {
     width: 80px; 
     margin-bottom: 10px; 
+  }
+  .change-quantity-container {
+   
+    margin-top: -2rem;    
+  }
+
+  .service img {
+    width: 200px
   }
 
 
