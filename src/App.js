@@ -45,6 +45,7 @@ function App() {
   const handleDocumentClick = (e)=>{
     if (isMenuOpen && !document.querySelector('.navburger').contains(e.target)) {
       toggleMenu();
+      
   }}
 
   const togglePlay = () => {
