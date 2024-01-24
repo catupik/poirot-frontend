@@ -1145,4 +1145,9 @@ option {
     margin-right: auto;;
    
   }
+
+  /* FOOTER */
+  .footer p {
+    font-size: 0.5rem;
+  }
 }
