@@ -271,9 +271,18 @@ body{
   display: flex;
   padding-top: 1rem;
 }
+.music-btn {
+  filter: invert(80%) sepia(50%) saturate(4000%) hue-rotate(-30deg) brightness(150%) contrast(50%);
+  cursor: pointer;
+}
 .send-icon {
   align-self: flex-start;
   margin: 0rem 2rem;
+}
+
+.music {
+  background-color: transparent;
+  border: none;
 }
 
 

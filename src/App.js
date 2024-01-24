@@ -9,13 +9,14 @@ import Home from "./Home";
 import Cart from "./Components/Cart/Cart"
 import Account from "./Account";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useEffect } from 'react';
+
 import { useSelector, useDispatch } from 'react-redux';
 import { updateCartFromLocalStorage } from './redux/cartSlice';
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Navigation from "./Navigation";
 import Loader from "./Loader/Loader";
 import Footer from "./Footer";
+import music from './poirot.mp3'
 
 
 
@@ -25,7 +26,9 @@ function App() {
   const dispatch = useDispatch();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [loading, setLoading] = useState(true);
-  const MY_URL = 'https://poirot-m4bt.onrender.com'
+  const MY_URL = 'https://poirot-m4bt.onrender.com';
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef(null);
  
  
 
@@ -44,6 +47,17 @@ function App() {
       toggleMenu();
   }}
 
+  const togglePlay = () => {
+    setIsPlaying(!isPlaying);
+    if (audioRef.current) {
+      if (!isPlaying) {
+        audioRef.current.play();
+      } else {
+        audioRef.current.pause();
+      }
+    }
+  };
+  
  
 
 
@@ -134,6 +148,10 @@ function App() {
       <NavLink className={({ isActive }) => isActive ? 'Link activeLink' : 'Link'}  to="/shop">Shop</NavLink>
       <NavLink className={({ isActive }) => isActive ? 'Link activeLink' : 'Link'}  to="/cart">Cart</NavLink>
       <NavLink className={({ isActive }) => isActive ? 'Link activeLink' : 'Link'} to='/myaccount'>My Account </NavLink>
+      <button className="music" onClick={togglePlay}>
+        {isPlaying ? <img className="music-btn" src="/account/noplay.png" alt="pause" width='30'/> : <img className="music-btn" src="/account/play.png" alt="play" width='30'/>}
+      </button>
+     <audio ref={audioRef} src={music} loop/>
       {!isAuthenticated &&(
         <NavLink className='Link' to="/login"
       onClick={loginWithRedirect}>Log in</NavLink>
