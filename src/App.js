@@ -45,7 +45,7 @@ function App() {
   const handleDocumentClick = (e)=>{
     if (isMenuOpen && !document.querySelector('.navburger').contains(e.target)) {
       toggleMenu();
-      
+
   }}
 
   const togglePlay = () => {
@@ -161,9 +161,7 @@ function App() {
         <NavLink className='Link'  to="/login"
       onClick={handleLogOut}>Log out</NavLink>
       )}
-      {/* domain : dev-0iiz3ltupfwws1at.us.auth0.com
-      client id: qNWN31ExH4l0aAb47AmVm6jyCvZwn8iP
-      secret: bT92uzQMshvBWZFL8Mtm6ll93wQJuJgLQw7YEveIXlYcl4XMqQZ0_-bB-C1yT8V2 */}
+     
      {/* Poirot06081975 */}
     </nav>
     
@@ -172,7 +170,10 @@ function App() {
     toggleMenu={toggleMenu}
     isAuthenticated={isAuthenticated}
     loginWithRedirect={loginWithRedirect}
-  handleLogOut={handleLogOut}
+    handleLogOut={handleLogOut}
+    togglePlay={togglePlay}
+    isPlaying={isPlaying}
+    audioRef={audioRef}
     />
 
       

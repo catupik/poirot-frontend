@@ -2,7 +2,9 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import { getTotalItems } from "./redux/cartSlice";
 
-const Navigation = ({ isMenuOpen, toggleMenu, isAuthenticated, loginWithRedirect, handleLogOut }) => {
+import music from './poirot.mp3'
+
+const Navigation = ({ isMenuOpen, toggleMenu, isAuthenticated, loginWithRedirect, handleLogOut, togglePlay, isPlaying, audioRef }) => {
     const handleLinkClick = () => {
         toggleMenu();
     };
@@ -15,6 +17,11 @@ const Navigation = ({ isMenuOpen, toggleMenu, isAuthenticated, loginWithRedirect
                   <p className="poirot-title">POIROT</p>
                   <h6 className="motto">Method. Order. And little grey cells</h6> 
                 </div>
+
+                <button className="music" onClick={togglePlay}>
+                    {isPlaying ? <img className="music-btn" src="/account/noplay.png" alt="pause" width='30'/> : <img className="music-btn" src="/account/play.png" alt="play" width='30'/>}
+                 </button>
+                 <audio ref={audioRef} src={music} loop/>
                 <div className="icon-with-badge">
                     <img onClick={toggleMenu} className="burger-icon" src="/poirot/detective.png" alt="Menu Icon"/>
                     {totalItems > 0 && <span className="badge">{totalItems}</span>}

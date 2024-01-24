@@ -821,6 +821,18 @@ option {
   z-index: 2001; 
 }
 
+.music {
+  position: relative;
+  display: inline-block;
+}
+.music-btn{
+  position: absolute;
+  top: -1.8rem; 
+  right: 6rem;
+  height: 1.6rem;
+  z-index: 5000;
+}
+
 .icon-with-badge {
   position: relative;
   display: inline-block;
