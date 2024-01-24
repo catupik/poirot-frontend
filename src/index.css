@@ -100,6 +100,7 @@ body{
   .motto {
     color: rgb(255, 0, 0);
     font-weight: bold;
+    
   }
 
 
@@ -823,29 +824,29 @@ option {
 
 .music {
   position: relative;
-  display: inline-block;
+  
 }
 .music-btn{
   position: absolute;
   top: -1.8rem; 
   right: 6rem;
   height: 1.6rem;
-  z-index: 5000;
+  z-index: 2000;
 }
 
 .icon-with-badge {
   position: relative;
-  display: inline-block;
+  
 }
 
 .badge {
   position: absolute;
-  top: -2.5rem; 
+  top: -2.6rem; 
   right: 2.5rem;
   background-color: rgb(208, 12, 28);
   color: white;
   border-radius: 50%;
-  padding: 0.25em 0.25em;
+  padding: 0.2em 0.2em;
   font-size: 0.6em;
   font-weight: bolder;
   text-align: center;
@@ -853,7 +854,7 @@ option {
   height: 1rem;
   line-height: 1rem; 
   font-weight: bold;
-  z-index: 5000;
+  z-index: 2002;
 }
 
 
@@ -1127,7 +1128,7 @@ option {
   }
 
   body {
-    padding-top: 3rem;
+    padding-top: 4rem;
   }
 
   .greeting p, .whyMe p, .about-section p {
