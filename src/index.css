@@ -96,6 +96,7 @@ body{
     font-size: 4rem;
     flex: 0 0 auto; 
     text-align: center;
+    font-weight: normal;
   }  
 
   .motto {
