@@ -367,6 +367,26 @@ padding: 1rem;
 .arrowbtn:hover{
   transform: scale(1.2);
 }
+.quantity {
+  display: flex;
+  align-items: center;
+}
+
+.quantity button  {
+  border: none;
+  background-color: transparent;
+  text-align: center;
+}
+
+.quantity button img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  vertical-align: middle;
+  width: 30px;
+  filter: invert(80%) sepia(50%) saturate(4000%) hue-rotate(-30deg) brightness(150%) contrast(50%);
+}
+
 
 .map-case-name{
   color: #cdaa5f;
@@ -782,7 +802,8 @@ option {
 }
 
 .cart-item-info {
-  flex-grow: 1; 
+  flex-grow: 1;
+  
 }
 
 .cart-item-remove {
