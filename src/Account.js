@@ -59,7 +59,7 @@ function Account() {
           {/* <p className="user-info"><strong>UserId:</strong> {user.sub}</p> */}
           <img src={user.picture} alt="user-pic" className="user-pic" />
         <div className="login">
-          <button onClick={() => logout({ returnTo: window.location.origin })} className="btn loginbtn">
+          <button onClick={() => logout({ returnTo: window.location.origin })} className="btn logoutbtn">
             Log Out
           </button>
           </div>
