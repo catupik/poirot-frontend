@@ -1046,6 +1046,11 @@ option {
     padding: 10px;
     
   }
+
+  .logoutbtn {
+    
+    width: 30%
+  }
   .cart-title{
     margin-top: 3rem;
    text-align: center;
