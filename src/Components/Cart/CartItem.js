@@ -48,7 +48,11 @@ const CartItem = ({ cartItem }) => {
         }),
       });
       if(response.ok){
-
+        const updatedCartResponse = await fetch(`${MY_URL}/cart/${user.sub}`); //delete
+        if (updatedCartResponse.ok) {               //delete
+          const updatedCart = await updatedCartResponse.json(); //delete
+          dispatch(updateCartFromLocalStorage(updatedCart)); //delete
+        }  //delete
       } else {
         console.error("Failed to update quantity in database")
       }
