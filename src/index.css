@@ -1033,6 +1033,19 @@ option {
     width: 100%;
     padding: 10px 0; 
   }
+.login {
+  display: flex;
+  justify-content: center;
+}
+  .loginbtn {
+    width: 50%;
+    padding: 10px;
+    
+  }
+  .cart-title{
+    margin-top: 3rem;
+   text-align: center;
+  }
   .near-picture {
     margin-bottom: 1rem;
   }

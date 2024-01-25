@@ -58,10 +58,11 @@ function Account() {
           </p>
           {/* <p className="user-info"><strong>UserId:</strong> {user.sub}</p> */}
           <img src={user.picture} alt="user-pic" className="user-pic" />
-
+        <div className="login">
           <button onClick={() => logout({ returnTo: window.location.origin })} className="btn loginbtn">
             Log Out
           </button>
+          </div>
         </div>
       )}
       {isAuthenticated && user?.email === "poirot@detective.com" && (
@@ -114,9 +115,12 @@ function Account() {
         <div>
           <h2 className="cart-title">Log in to the system</h2>
           {!isAuthenticated&& (
+
+            <div className="login">
             <button className='btn loginbtn' onClick={() => loginWithRedirect()}>
             Log In
           </button>
+          </div>
           )}
 
           
