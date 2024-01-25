@@ -29,7 +29,7 @@ const Item = ({ item }) => {
 
         if(response.ok){
           dispatch(addItemToCart({ item, quantity }));
-        
+        console.log(item)
         } else{
           console.error('Failed to add item to database');
         }
