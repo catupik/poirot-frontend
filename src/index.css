@@ -70,6 +70,7 @@ body{
     align-items: center;
     transition: transform 0.3s ease;
     font-size: 1rem;
+    font-weight: bold;
   }
   .Link:hover {
     transform: scale(1.1);
@@ -827,7 +828,7 @@ option {
 .burger-icon {
   display: none;
   cursor: pointer;
-  width: 40px;
+  width: 35px;
   position: absolute;
   right: 3rem; 
   top: -2.5rem;

@@ -19,7 +19,7 @@ const Navigation = ({ isMenuOpen, toggleMenu, isAuthenticated, loginWithRedirect
                 </div>
 
                 <button className="music" onClick={togglePlay}>
-                    {isPlaying ? <img className="music-btn" src="/account/noplay.png" alt="pause" width='30'/> : <img className="music-btn" src="/account/play.png" alt="play" width='30'/>}
+                    {isPlaying ? <img className="music-btn" src="/account/play.png" alt="play" width='30'/> : <img className="music-btn" src="/account/noplay.png" alt="pause" width='30'/>  }
                  </button>
                  <audio ref={audioRef} src={music} loop/>
                 <div className="icon-with-badge">
@@ -29,19 +29,19 @@ const Navigation = ({ isMenuOpen, toggleMenu, isAuthenticated, loginWithRedirect
             </div>
             
             <div className={isMenuOpen ? "nav-links active" : "nav-links"}>
-                <NavLink to="/" onClick={handleLinkClick}>Home</NavLink>
-                <NavLink to="/about" onClick={handleLinkClick}>About Me</NavLink>
-                <NavLink to="/cases" onClick={handleLinkClick}>Cases</NavLink>
-                <NavLink to="/services" onClick={handleLinkClick}>Services</NavLink>
-                <NavLink to="/contact" onClick={handleLinkClick}>Contact Me</NavLink>
-                <NavLink to="/shop" onClick={handleLinkClick}>Shop</NavLink>
-                <NavLink to="/cart" onClick={handleLinkClick}>Cart</NavLink>
-                <NavLink to="/myaccount" onClick={handleLinkClick}>My Account</NavLink>
+                <NavLink className='Link' to="/" onClick={handleLinkClick}>HOME</NavLink>
+                <NavLink className='Link' to="/about" onClick={handleLinkClick}>ABOUT</NavLink>
+                <NavLink className='Link' to="/cases" onClick={handleLinkClick}>CASES</NavLink>
+                <NavLink className='Link' to="/services" onClick={handleLinkClick}>SERVICES</NavLink>
+                <NavLink className='Link' to="/contact" onClick={handleLinkClick}>CONTACT</NavLink>
+                <NavLink className='Link' to="/shop" onClick={handleLinkClick}>SHOP</NavLink>
+                <NavLink className='Link' to="/cart" onClick={handleLinkClick}>CART</NavLink>
+                <NavLink className='Link' to="/myaccount" onClick={handleLinkClick}>ACCOUNT</NavLink>
                 {!isAuthenticated && (
-                    <NavLink to="/login" onClick={() => { loginWithRedirect(); handleLinkClick(); }}>Log in</NavLink>
+                    <NavLink to="/login" className='Link' onClick={() => { loginWithRedirect(); handleLinkClick(); }}>LOGIN</NavLink>
                 )}
                 {isAuthenticated && (
-                    <NavLink to="/login" onClick={() => { handleLogOut(); handleLinkClick(); }}>Log out</NavLink>
+                    <NavLink to="/login"  className='Link' onClick={() => { handleLogOut(); handleLinkClick(); }}>LOGOUT</NavLink>
                 )}
             </div>
         </nav>

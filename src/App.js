@@ -135,10 +135,10 @@ function App() {
     
     <nav className="nav">
       
-    <NavLink className={({ isActive }) => isActive ? 'Link activeLink' : 'Link'} to="/about">About Me</NavLink>      
-    <NavLink className={({ isActive }) => isActive ? 'Link activeLink' : 'Link'}  to="/cases">Cases</NavLink>
-      <NavLink className={({ isActive }) => isActive ? 'Link activeLink' : 'Link'}  to="/services">Services</NavLink>
-      <NavLink className={({ isActive }) => isActive ? 'Link activeLink' : 'Link'} to="/contact"  >Contact Me</NavLink>
+    <NavLink className={({ isActive }) => isActive ? 'Link activeLink' : 'Link'} to="/about">ABOUT</NavLink>      
+    <NavLink className={({ isActive }) => isActive ? 'Link activeLink' : 'Link'}  to="/cases">CASES</NavLink>
+      <NavLink className={({ isActive }) => isActive ? 'Link activeLink' : 'Link'}  to="/services">SERVICES</NavLink>
+      <NavLink className={({ isActive }) => isActive ? 'Link activeLink' : 'Link'} to="/contact"  >CONTACT</NavLink>
       
       
       <div className="nav-header">
@@ -146,20 +146,20 @@ function App() {
     <div className="motto">Method. Order. And little grey cells</div>
   </div>
 
-      <NavLink className={({ isActive }) => isActive ? 'Link activeLink' : 'Link'}  to="/shop">Shop</NavLink>
-      <NavLink className={({ isActive }) => isActive ? 'Link activeLink' : 'Link'}  to="/cart">Cart</NavLink>
-      <NavLink className={({ isActive }) => isActive ? 'Link activeLink' : 'Link'} to='/myaccount'>My Account </NavLink>
+      <NavLink className={({ isActive }) => isActive ? 'Link activeLink' : 'Link'}  to="/shop">SHOP</NavLink>
+      <NavLink className={({ isActive }) => isActive ? 'Link activeLink' : 'Link'}  to="/cart">CART</NavLink>
+      <NavLink className={({ isActive }) => isActive ? 'Link activeLink' : 'Link'} to='/myaccount'>ACCOUNT </NavLink>
       <button className="music" onClick={togglePlay}>
-        {isPlaying ? <img className="music-btn" src="/account/noplay.png" alt="pause" width='30'/> : <img className="music-btn" src="/account/play.png" alt="play" width='30'/>}
+      {isPlaying ? <img className="music-btn" src="/account/play.png" alt="play" width='30'/> : <img className="music-btn" src="/account/noplay.png" alt="pause" width='30'/>  }
       </button>
      <audio ref={audioRef} src={music} loop/>
       {!isAuthenticated &&(
         <NavLink className='Link' to="/login"
-      onClick={loginWithRedirect}>Log in</NavLink>
+      onClick={loginWithRedirect}>LOGIN</NavLink>
       )}
       {isAuthenticated &&(
         <NavLink className='Link'  to="/login"
-      onClick={handleLogOut}>Log out</NavLink>
+      onClick={handleLogOut}>LOGOUT</NavLink>
       )}
      
      {/* Poirot06081975 */}
