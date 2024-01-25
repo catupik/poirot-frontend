@@ -59,7 +59,7 @@ function Account() {
           {/* <p className="user-info"><strong>UserId:</strong> {user.sub}</p> */}
           <img src={user.picture} alt="user-pic" className="user-pic" />
 
-          <button onClick={() => logout({ returnTo: window.location.origin })} className="btn">
+          <button onClick={() => logout({ returnTo: window.location.origin })} className="btn loginbtn">
             Log Out
           </button>
         </div>
@@ -114,7 +114,7 @@ function Account() {
         <div>
           <h2 className="cart-title">Log in to the system</h2>
           {!isAuthenticated&& (
-            <button className='btn' onClick={() => loginWithRedirect()}>
+            <button className='btn loginbtn' onClick={() => loginWithRedirect()}>
             Log In
           </button>
           )}

@@ -266,6 +266,11 @@ body{
   font-weight: bold;
 }
 
+.loginbtn {
+  margin-top: 2rem;
+  width: 30%
+}
+
 .btn:hover {
   transform: scale(1.05);
 }
