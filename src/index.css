@@ -1046,7 +1046,9 @@ option {
     padding: 10px;
     
   }
-
+ .logout {
+  margin-left: 2rem;
+ }
   .logoutbtn {
     
     width: 30%
