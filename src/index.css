@@ -720,7 +720,9 @@ option {
   margin-bottom: 20px;
 }
 
-
+.messages{
+  margin-left: 1rem;
+}
 .messages-list {
   list-style-type: none; 
   padding: 0; 

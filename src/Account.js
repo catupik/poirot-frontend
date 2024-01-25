@@ -67,7 +67,7 @@ function Account() {
       )}
       {isAuthenticated && user?.email === "poirot@detective.com" && (
         <div>
-          <h2 className="messages-list">Messages:</h2>
+          <h2 className="messages">Messages:</h2>
           <ul className="messages-list">
             {messages.map((msg) => (
               <div key={msg._id}>
