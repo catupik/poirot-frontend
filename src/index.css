@@ -271,7 +271,8 @@ body{
   width: 30%
 }
 .logoutbtn {
-  margin-left: 4rem;
+  margin-left: 3rem;
+  width: 30%
 }
 
 .btn:hover {
