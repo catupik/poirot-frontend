@@ -17,12 +17,45 @@ const CartItem = ({ cartItem }) => {
   const items = dataItems.find((item) => item.id === cartItem.itemId);
 
   const handleIncrement = () => {
+    const newQuantity = cartItem.quantity + 1;
     dispatch(incrementItemQuantity({ cartItemId: cartItem.id }));
+    if (isAuthenticated) {
+      updateQuantityInDatabase(newQuantity);
+    }
   };
 
   const handleDecrement = () => {
-    dispatch(decrementItemQuantity({ cartItemId: cartItem.id }));
+    const newQuantity = cartItem.quantity - 1;
+    if (newQuantity > 0) {
+      dispatch(decrementItemQuantity({ cartItemId: cartItem.id }));
+      if (isAuthenticated) {
+        updateQuantityInDatabase(newQuantity);
+      }
+    }
   };
+
+  const updateQuantityInDatabase = async (newQuantity) => {
+    try {
+      const response = await fetch (`${MY_URL}/cart/update-quantity`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: user.sub,
+          itemId: cartItem.itemId,
+          newQuantity,
+        }),
+      });
+      if(response.ok){
+
+      } else {
+        console.error("Failed to update quantity in database")
+      }
+    } catch(error){
+      console.error("Error updating quantity in database:", error);
+    }
+  }
 
   const handleRemoveFromCart = async () => {
     if (isAuthenticated) {
@@ -78,7 +111,7 @@ const CartItem = ({ cartItem }) => {
           </button>
         </div>
         {/* <p>{cartItem.quantity} pcs.</p> */}
-        <p>Price: £ {cartItem.totalPrice}</p>
+        <p><strong>Price:</strong> £ {cartItem.totalPrice}</p>
       </div>
 
       <img

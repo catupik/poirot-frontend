@@ -23,6 +23,7 @@ const Item = ({ item }) => {
           itemId: item.id,
           quantity: quantity,
           totalPrice: item.price * quantity,
+          pricePerItem: item.price
         }),
         });
 

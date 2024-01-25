@@ -386,7 +386,9 @@ padding: 1rem;
   width: 30px;
   filter: invert(80%) sepia(50%) saturate(4000%) hue-rotate(-30deg) brightness(150%) contrast(50%);
 }
-
+.quantity span {
+  font-weight: bold;
+}
 
 .map-case-name{
   color: #cdaa5f;
