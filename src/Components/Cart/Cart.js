@@ -14,7 +14,7 @@ const Cart = () => {
         <h2 className="cart-title">Your cart is empty</h2>
       ) : (
         <div>
-          <div>
+          <div className="sticky">
            <h2 className="cart-title">TOTAL: £{totalPrice}</h2>
            <button className="btn">Check out</button>
           </div>

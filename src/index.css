@@ -819,6 +819,14 @@ option {
 .delete-icon.cart-item-remove {
   width: 30px; 
 }
+
+.sticky {
+  position: sticky;
+  top: 7.11rem; 
+  background-color: rgba(24, 35, 38, 0.849); 
+  padding: 10px;
+  z-index: 100;
+}
 /* MAP */
 .leaflet-popup-content-wrapper {
   background-color: #182326; 
@@ -1056,7 +1064,13 @@ option {
   .service img {
     width: 200px
   }
-
+  .sticky {
+    position: sticky;
+    top: 5.2rem; 
+    background-color: rgba(24, 35, 38, 0.849); 
+    padding: 10px;
+    z-index: 100;
+  }
 
  
   .btn {
