@@ -1,8 +1,10 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useState, useEffect } from "react";
 
+
+
 function Account() {
-  const { isAuthenticated, user } = useAuth0();
+  const { isAuthenticated, user, loginWithRedirect, logout } = useAuth0();
   const [messages, setMessages] = useState([]);
   // eslint-disable-next-line
   const [userId, setUserId] = useState(null);
@@ -56,6 +58,10 @@ function Account() {
           </p>
           {/* <p className="user-info"><strong>UserId:</strong> {user.sub}</p> */}
           <img src={user.picture} alt="user-pic" className="user-pic" />
+
+          <button onClick={() => logout({ returnTo: window.location.origin })} className="btn">
+            Log Out
+          </button>
         </div>
       )}
       {isAuthenticated && user?.email === "poirot@detective.com" && (
@@ -107,6 +113,13 @@ function Account() {
       {!isAuthenticated && (
         <div>
           <h2 className="cart-title">Log in to the system</h2>
+          {!isAuthenticated&& (
+            <button className='btn' onClick={() => loginWithRedirect()}>
+            Log In
+          </button>
+          )}
+
+          
         </div>
       )}
     </div>

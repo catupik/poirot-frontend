@@ -155,11 +155,11 @@ function App() {
      <audio ref={audioRef} src={music} loop/>
       {!isAuthenticated &&(
         <NavLink className='Link' to="/login"
-      onClick={loginWithRedirect}>LOGIN</NavLink>
+      onClick={loginWithRedirect}>LOG IN</NavLink>
       )}
       {isAuthenticated &&(
         <NavLink className='Link'  to="/login"
-      onClick={handleLogOut}>LOGOUT</NavLink>
+      onClick={handleLogOut}>LOG OUT</NavLink>
       )}
      
      {/* Poirot06081975 */}

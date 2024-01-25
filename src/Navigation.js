@@ -38,10 +38,10 @@ const Navigation = ({ isMenuOpen, toggleMenu, isAuthenticated, loginWithRedirect
                 <NavLink className='Link' to="/cart" onClick={handleLinkClick}>CART</NavLink>
                 <NavLink className='Link' to="/myaccount" onClick={handleLinkClick}>ACCOUNT</NavLink>
                 {!isAuthenticated && (
-                    <NavLink to="/login" className='Link' onClick={() => { loginWithRedirect(); handleLinkClick(); }}>LOGIN</NavLink>
+                    <NavLink to="/login" className='Link' onClick={() => { loginWithRedirect(); handleLinkClick(); }}>LOG IN</NavLink>
                 )}
                 {isAuthenticated && (
-                    <NavLink to="/login"  className='Link' onClick={() => { handleLogOut(); handleLinkClick(); }}>LOGOUT</NavLink>
+                    <NavLink to="/login"  className='Link' onClick={() => { handleLogOut(); handleLinkClick(); }}>LOG OUT</NavLink>
                 )}
             </div>
         </nav>
