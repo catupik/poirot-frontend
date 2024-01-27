@@ -24,7 +24,7 @@ import { useSelector } from "react-redux";
           const response = await axios.post(
             "https://herculepoirot.netlify.app/stripe/charge",
             {
-              amount: {totalPrice},
+              amount: 999,
               id: id,
             }
           );
