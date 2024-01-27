@@ -8,6 +8,7 @@ const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
   const totalPrice = useSelector(getTotalPrice);
+  amount = totalPrice * 100;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -24,7 +25,7 @@ const CheckoutForm = () => {
         const response = await axios.post(
           "https://poirot-m4bt.onrender.com/stripe/charge",
           {
-            amount: {totalPrice},
+            amount: amount,
             id: id,
           }
         );
