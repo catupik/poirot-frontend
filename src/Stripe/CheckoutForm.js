@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import axios from "axios";
 import { getTotalPrice, clearCart } from "../redux/cartSlice";
@@ -11,20 +11,20 @@ const CheckoutForm = () => {
   const totalPrice = useSelector(getTotalPrice);
   const amount = totalPrice * 100;
   const { isAuthenticated } = useAuth0();
-const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  
   const closeModal = () => {
-    
     setIsModalOpen(false);
   };
 
-  const handlePaymentSuccess = () => {
-    
-    if (!isAuthenticated) {
-      localStorage.removeItem('cart');
+  useEffect(() => {
+    if (!isModalOpen && !isAuthenticated) {
+      localStorage.removeItem("cart");
       dispatch(clearCart());
     }
-  };
+  }, [isModalOpen, isAuthenticated, dispatch]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -48,9 +48,8 @@ const dispatch = useDispatch();
         console.log("stripe 35 | data", response.data.success);
         if (response.data.success) {
           console.log("Payment successful");
-          handlePaymentSuccess();
+
           setIsModalOpen(true);
-          
         }
       } catch (error) {
         console.log("CheckoutForm.js 28 | error:", error);
