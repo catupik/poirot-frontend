@@ -14,6 +14,7 @@ const CheckoutForm = () => {
 const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const closeModal = () => {
+    handlePaymentSuccess();
     setIsModalOpen(false);
   };
 
@@ -48,7 +49,7 @@ const dispatch = useDispatch();
         if (response.data.success) {
           console.log("Payment successful");
           setIsModalOpen(true);
-          handlePaymentSuccess();
+          
         }
       } catch (error) {
         console.log("CheckoutForm.js 28 | error:", error);
