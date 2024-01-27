@@ -8,7 +8,7 @@ const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
   const totalPrice = useSelector(getTotalPrice);
-  amount = totalPrice * 100;
+  const amount = totalPrice * 100;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
