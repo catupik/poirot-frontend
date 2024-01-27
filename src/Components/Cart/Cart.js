@@ -1,12 +1,13 @@
 import CartItem from "./CartItem";
 import { getCartItems, getTotalPrice } from "../../redux/cartSlice";
 import { useSelector } from "react-redux";
+import Stripe from "../../Stripe/StripeContainer";
 
 const Cart = () => {
   
   const cartItems = useSelector(getCartItems);
   const totalPrice = useSelector(getTotalPrice);
-
+  
 
   return (
     <div className="cart-container">
@@ -16,10 +17,11 @@ const Cart = () => {
         <div>
           <div className="sticky">
            <h2 className="cart-title">TOTAL: £{totalPrice}</h2>
-           <button className="btn">Check out</button>
+           {/* <button className="btn">Check out</button> */}
+           <Stripe/>
           </div>
-          
-          {cartItems.map((cartItem) => (
+       
+         {cartItems.map((cartItem) => (
             <CartItem key={cartItem.itemId} cartItem={cartItem} />
           ))}
         </div>
