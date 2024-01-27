@@ -22,7 +22,7 @@ import { useSelector } from "react-redux";
         try {
           const { id } = paymentMethod;
           const response = await axios.post(
-            "https://herculepoirot.netlify.app/stripe/charge",
+            "https://poirot-m4bt.onrender.com/stripe/charge",
             {
               amount: 999,
               id: id,
