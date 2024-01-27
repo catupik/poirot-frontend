@@ -24,7 +24,7 @@ const CheckoutForm = () => {
         const response = await axios.post(
           "https://poirot-m4bt.onrender.com/stripe/charge",
           {
-            amount: {totalPrice} * 100,
+            amount: {totalPrice},
             id: id,
           }
         );
