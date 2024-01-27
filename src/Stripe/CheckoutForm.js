@@ -1,13 +1,13 @@
 import React from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import axios from "axios";
-import { getTotalPrice } from "../redux/cartSlice";
-import { useSelector } from "react-redux";
+// import { getTotalPrice } from "../redux/cartSlice";
+// import { useSelector } from "react-redux";
 
 const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
-  const totalPrice = useSelector(getTotalPrice);
+//   const totalPrice = useSelector(getTotalPrice);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
