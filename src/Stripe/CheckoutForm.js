@@ -1,13 +1,13 @@
 import React from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import axios from "axios";
-// import { getTotalPrice } from "../redux/cartSlice";
-// import { useSelector } from "react-redux";
+import { getTotalPrice } from "../redux/cartSlice";
+import { useSelector } from "react-redux";
 
 const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
-//   const totalPrice = useSelector(getTotalPrice);
+  const totalPrice = useSelector(getTotalPrice);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -24,7 +24,7 @@ const CheckoutForm = () => {
         const response = await axios.post(
           "https://poirot-m4bt.onrender.com/stripe/charge",
           {
-            amount: 999,
+            amount: {totalPrice} * 100,
             id: id,
           }
         );
