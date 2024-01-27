@@ -382,7 +382,7 @@ padding: 1rem;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  vertical-align: middle;
+ cursor: pointer;
   width: 30px;
   filter: invert(80%) sepia(50%) saturate(4000%) hue-rotate(-30deg) brightness(150%) contrast(50%);
 }
