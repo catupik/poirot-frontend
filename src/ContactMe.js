@@ -39,13 +39,16 @@ function ContactMe() {
       consultationType: formData.get("consultationType"),
     };
 
-    const response = await fetch("https://poirot-m4bt.onrender.com/sendmessage", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+    const response = await fetch(
+      "https://poirot-m4bt.onrender.com/sendmessage",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    );
 
     if (response.ok) {
       setIsModalOpen(true);
@@ -78,23 +81,28 @@ function ContactMe() {
           and deductive approach, I am here to assist. My experience and skills
           are available to you, and I am ready to offer professional
           consultation. <br /> <br />
-          <strong className="strong">Consultation Services:</strong> <br /><br/>
-          <strong className="strong">Personal Consultations:</strong> If you wish to arrange a
-          meeting to discuss your case, please contact me to set up an
-          appointment.
-          <br /><br/>
-          <strong className="strong">Online Consultations:</strong> For those who prefer digital
-          communication, I am available for online consultations via email or
-          video calls. <br />
+          <strong className="strong">Consultation Services:</strong> <br />
           <br />
-          <strong className="strong">Service Fees:</strong> Each case is unique, and the cost of my
-          services depends on the complexity and requirements of the
-          investigation. You can find detailed information about pricing and
-          conditions by contacting me. <br />
+          <strong className="strong">Personal Consultations:</strong> If you
+          wish to arrange a meeting to discuss your case, please contact me to
+          set up an appointment.
           <br />
-          <strong className="strong">My email: </strong> poirot@detective.com <br /><br/>
-          <strong className="strong">Social Networks:</strong> Join me on social networks to get
-          the latest information. <br />
+          <br />
+          <strong className="strong">Online Consultations:</strong> For those
+          who prefer digital communication, I am available for online
+          consultations via email or video calls. <br />
+          <br />
+          <strong className="strong">Service Fees:</strong> Each case is unique,
+          and the cost of my services depends on the complexity and requirements
+          of the investigation. You can find detailed information about pricing
+          and conditions by contacting me. <br />
+          <br />
+          <strong className="strong">
+            My email:{" "}
+          </strong> poirot@detective.com <br />
+          <br />
+          <strong className="strong">Social Networks:</strong> Join me on social
+          networks to get the latest information. <br />
         </p>
         <div className="social">
           <a
@@ -149,10 +157,11 @@ function ContactMe() {
           </a>
         </div>
         <p>
-          <strong className="strong">My Commitment:</strong> Every inquiry will be considered with
-          the utmost attention and professionalism. I guarantee confidentiality
-          and a meticulous approach to every detail of your case. I look forward
-          to the opportunity to help you uncover mysteries and find the truth.
+          <strong className="strong">My Commitment:</strong> Every inquiry will
+          be considered with the utmost attention and professionalism. I
+          guarantee confidentiality and a meticulous approach to every detail of
+          your case. I look forward to the opportunity to help you uncover
+          mysteries and find the truth.
           <br />
           <br />
           Best wishes, <br />
@@ -161,7 +170,7 @@ function ContactMe() {
       </div>
       <h3>Use the form on the website to submit your inquiry.</h3>
 
-      <form 
+      <form
         method="POST"
         action="/contact"
         id="bookingForm"
