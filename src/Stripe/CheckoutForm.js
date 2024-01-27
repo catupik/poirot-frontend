@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import axios from "axios";
 import { getTotalPrice } from "../redux/cartSlice";
@@ -9,6 +9,11 @@ const CheckoutForm = () => {
   const elements = useElements();
   const totalPrice = useSelector(getTotalPrice);
   const amount = totalPrice * 100;
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -32,6 +37,7 @@ const CheckoutForm = () => {
         console.log("stripe 35 | data", response.data.success);
         if (response.data.success) {
           console.log("Payment successful");
+          setIsModalOpen(true);
         }
       } catch (error) {
         console.log("CheckoutForm.js 28 | error:", error);
@@ -41,10 +47,22 @@ const CheckoutForm = () => {
     }
   };
   return (
+    <div>
     <form onSubmit={handleSubmit} style={{ maxWidth: 400 }}>
       <CardElement />
       <button className="btn">Check out</button>
     </form>
+
+    {isModalOpen && (
+        <div className="modal">
+          <div className="modal-content">
+            <p>Payment successful!</p>
+            <button onClick={closeModal}>Close</button>
+          </div>
+        </div>
+      )}
+    </div>
+    
   );
 };
 
