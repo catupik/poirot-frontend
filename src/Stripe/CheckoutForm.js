@@ -18,7 +18,7 @@ const dispatch = useDispatch();
   };
 
   const handlePaymentSuccess = () => {
-    setIsModalOpen(true);
+    
     if (!isAuthenticated) {
       localStorage.removeItem('cart');
       dispatch(clearCart());
@@ -47,6 +47,7 @@ const dispatch = useDispatch();
         console.log("stripe 35 | data", response.data.success);
         if (response.data.success) {
           console.log("Payment successful");
+          setIsModalOpen(true);
           handlePaymentSuccess();
         }
       } catch (error) {
