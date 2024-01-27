@@ -14,13 +14,13 @@ const CheckoutForm = () => {
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  
+
   const closeModal = () => {
     setIsModalOpen(false);
   };
 
   useEffect(() => {
-    if (!isModalOpen && !isAuthenticated) {
+    if (isModalOpen && !isAuthenticated) {
       localStorage.removeItem("cart");
       dispatch(clearCart());
     }
