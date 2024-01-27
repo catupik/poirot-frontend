@@ -17,14 +17,13 @@ const CheckoutForm = () => {
 
   const closeModal = () => {
     setIsModalOpen(false);
+    if (!isAuthenticated) {
+        localStorage.removeItem("cart");
+        dispatch(clearCart());
+      }
   };
 
-  useEffect(() => {
-    if (isModalOpen && !isAuthenticated) {
-      localStorage.removeItem("cart");
-      dispatch(clearCart());
-    }
-  }, [isModalOpen, isAuthenticated, dispatch]);
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
