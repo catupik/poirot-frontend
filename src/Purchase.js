@@ -10,24 +10,27 @@ const Purchase = ({ purchase }) => {
   );
 
   return (
-    <div key={purchase._id}>
-      <h3>Purchase Date: {purchaseDate}</h3>
-      <ul>
+    <div key={purchase._id} className="purchase-item">
+      <h3 className="purchase-date">Purchase Date: {purchaseDate}</h3>
+      <ul className="purchase-list">
         {purchase.items.map((item) => {
           const product = dataItems.find((prod) => prod.id === item.itemId);
 
           return (
-            <li key={item._id}>
-              <img
-                src={`items/${product.image}.jpeg`}
-                alt={product.name}
-                width="25"
-                height="25"
-              />
-              <strong>{product.name}</strong> - Quantity: {item.quantity}, 
-              Price: ${item.pricePerItem}, 
-              Total Price: ${item.totalPrice}
-            </li>
+            <li key={item._id} className="cart-item">
+            <div className="purchase-item-image-block">
+                <img
+                    src={`items/${product.image}.jpeg`}
+                    alt={product.name}
+                    className="cart-item-image"
+                />
+            </div>
+            <div className="cart-item-info">
+                <strong>{product.name}</strong> - {item.quantity} pcs.
+                <br />Price: ${item.pricePerItem}
+                <br />Total: ${item.totalPrice}
+            </div>
+        </li>
           );
         })}
       </ul>
