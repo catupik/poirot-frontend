@@ -30,18 +30,20 @@ const CheckoutForm = () => {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ cartItems }),
+          body: JSON.stringify({purchases: cartItems }),
         });
 
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
+
+        localStorage.removeItem("cart");
+      dispatch(clearCart());
       } catch (error) {
         console.error("Error updating purchase history:", error);
       }
 
-      localStorage.removeItem("cart");
-      dispatch(clearCart());
+      
         }
     
   };
