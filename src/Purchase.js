@@ -5,7 +5,7 @@ const Purchase = (purchase) =>{
     }
 
     const purchaseDate = new Date(purchase.purchaseDate).toLocaleDateString('en-US');
-
+    console.log(purchase)
     return(
 
         <div key={purchase._id}>
