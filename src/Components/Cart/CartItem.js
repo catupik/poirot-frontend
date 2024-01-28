@@ -36,7 +36,7 @@ const CartItem = ({ cartItem }) => {
 
   const updateQuantityInDatabase = async (newQuantity) => {
     try {
-      const response = await fetch (`${MY_URL}/cart/update-quantity`, {
+      const response = await fetch(`${MY_URL}/cart/update-quantity`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -47,19 +47,20 @@ const CartItem = ({ cartItem }) => {
           newQuantity,
         }),
       });
-      if(response.ok){
+      if (response.ok) {
         const updatedCartResponse = await fetch(`${MY_URL}/cart/${user.sub}`); //delete
-        if (updatedCartResponse.ok) {               //delete
+        if (updatedCartResponse.ok) {
+          //delete
           const updatedCart = await updatedCartResponse.json(); //delete
           dispatch(updateCartFromLocalStorage(updatedCart)); //delete
-        }  //delete
+        } //delete
       } else {
-        console.error("Failed to update quantity in database")
+        console.error("Failed to update quantity in database");
       }
-    } catch(error){
+    } catch (error) {
       console.error("Error updating quantity in database:", error);
     }
-  }
+  };
 
   const handleRemoveFromCart = async () => {
     if (isAuthenticated) {
@@ -105,8 +106,8 @@ const CartItem = ({ cartItem }) => {
       />
       <div className="cart-item-info">
         <h3>{items.name}</h3>
-        <div className="quantity">
-          <button  onClick={handleDecrement}>
+        <div className="cartquantity">
+          <button onClick={handleDecrement}>
             <img src="/cases/arrowleft.png" alt="btn" />
           </button>
           <span>{cartItem.quantity} pcs.</span>
@@ -115,7 +116,9 @@ const CartItem = ({ cartItem }) => {
           </button>
         </div>
         {/* <p>{cartItem.quantity} pcs.</p> */}
-        <p><strong>Price:</strong> £ {cartItem.totalPrice}</p>
+        <p>
+          <strong>Price:</strong> £ {cartItem.totalPrice}
+        </p>
       </div>
 
       <img

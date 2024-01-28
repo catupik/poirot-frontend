@@ -374,18 +374,18 @@ padding: 1rem;
 .arrowbtn:hover{
   transform: scale(1.2);
 }
-.quantity {
+.cartquantity {
   display: flex;
   align-items: center;
 }
 
-.quantity button  {
+.cartquantity button  {
   border: none;
   background-color: transparent;
   text-align: center;
 }
 
-.quantity button img{
+.cartquantity button img{
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -393,7 +393,7 @@ padding: 1rem;
   width: 30px;
   filter: invert(80%) sepia(50%) saturate(4000%) hue-rotate(-30deg) brightness(150%) contrast(50%);
 }
-.quantity span {
+.cartquantity span {
   font-weight: bold;
 }
 
