@@ -1,5 +1,6 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useState, useEffect } from "react";
+import Purchase from "./Purchase";
 
 
 
@@ -8,6 +9,7 @@ function Account() {
   const [messages, setMessages] = useState([]);
   // eslint-disable-next-line
   const [userId, setUserId] = useState(null);
+  const [purchaseHistory, setPurchaseHistory] = useState([]);
   const MY_URL = 'https://poirot-m4bt.onrender.com'
 
   useEffect(() => {
@@ -28,6 +30,26 @@ function Account() {
     };
     fetchMessages();
   }, []);
+
+  useEffect(() => {
+    const fetchPurchaseHistory = async () => {
+      if (isAuthenticated) {
+        try {
+          const response = await fetch(`${MY_URL}/purchase-history/${user.sub}`);
+          if (!response.ok) {
+            throw new Error('Error fetching purchase history');
+          }
+          const data = await response.json();
+          setPurchaseHistory(data);
+        } catch (err) {
+          console.error("Error fetching purchase history:", err);
+        }
+      }
+    };
+
+    fetchPurchaseHistory();
+  }, [isAuthenticated, user]);
+
 
   const deletemessage = async (id) => {
     try {
@@ -63,6 +85,18 @@ function Account() {
             Log Out
           </button>
           </div>
+
+
+          <div>
+          <h2>Purchase History</h2>
+          {purchaseHistory.length > 0 ? (
+            purchaseHistory.map((purchase) => <Purchase purchase={purchase}/>)
+          ) : (
+            <p>No purchase history available.</p>
+          )}
+        </div>
+
+
         </div>
       )}
       {isAuthenticated && user?.email === "poirot@detective.com" && (
