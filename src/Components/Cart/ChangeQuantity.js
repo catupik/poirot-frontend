@@ -10,6 +10,12 @@ const ChangeQuantity = ({ quantity, setQuantity }) => {
     setQuantity(newQuantity);
   };
 
+  const handleQuantityChange = (e) => {
+    const value = e.target.value.replace(/[^0-9]/g, "");
+    const newQuantity = Math.max(1, parseInt(value, 10) || 1);
+    setQuantity(newQuantity);
+  };
+
   return (
     <div className="change-block">
       <img
@@ -19,7 +25,13 @@ const ChangeQuantity = ({ quantity, setQuantity }) => {
         alt="btn"
       />
 
-      <p> {quantity} </p>
+      <input
+        type="number"
+        value={quantity}
+        onChange={handleQuantityChange}
+        min="1"
+        className="quantity-input"
+      />
 
       <img
         onClick={addQuantity}
