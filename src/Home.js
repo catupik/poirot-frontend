@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
 function Home() {
+  const navigate = useNavigate();
   return (
     <div className="about-container">
       <div className="about-section">
@@ -159,6 +162,62 @@ function Home() {
           </div>
         </div>
       </div>
+      <button className="btn near-picture" onClick={() => navigate("/contact")}>
+            Contact me
+          </button>
+
+          <div className="social">
+          <a
+            href="https://www.facebook.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-tooltip="Facebook"
+          >
+            <img
+              className="icon-mousetach socialicon"
+              src="/contact/detective.png"
+              alt="facebook"
+              width="50px"
+            />
+          </a>
+          <a
+            href="https://www.instagram.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-tooltip="Instagram"
+          >
+            <img
+              className="icon-mousetach socialicon"
+              src="/contact/instagram.png"
+              alt="instagram"
+              width="50px"
+            />
+          </a>
+          <a
+            href="https://t.me/"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-tooltip="Telegram"
+          >
+            <img
+              className="icon-mousetach socialicon"
+              src="/contact/telegram.png"
+              alt="telegram"
+              width="50px"
+            />
+          </a>
+          <a
+            href="mailto:poirot@detective.com"
+            data-tooltip="puaro@detective.com"
+          >
+            <img
+              className="icon-mousetach socialicon"
+              src="/contact/email.png"
+              alt="email"
+              width="50px"
+            />
+          </a>
+        </div>
     </div>
   );
 }
