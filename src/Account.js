@@ -89,7 +89,7 @@ function Account() {
           </div>
 
 
-          <div>
+          <div className="account-container">
           <h2>Purchase History</h2>
           {purchaseHistory.length > 0 ? (
             purchaseHistory.map((purchase) => <Purchase purchase={purchase}/>)

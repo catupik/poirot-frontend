@@ -17,7 +17,7 @@ const Purchase = ({ purchase }) => {
           const product = dataItems.find((prod) => prod.id === item.itemId);
 
           return (
-            <li key={item._id} className="cart-item">
+            <li key={item._id} className="cart-item purchase">
             <div className="purchase-item-image-block">
                 <img
                     src={`items/${product.image}.jpeg`}

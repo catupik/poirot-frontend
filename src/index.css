@@ -797,6 +797,14 @@ option {
   justify-content: space-between; 
 }
 
+.cart-item .purchase{
+  border-bottom: none; 
+}
+
+.purchase-item{
+  border-bottom: 1px solid #cdaa5f; 
+}
+
 .cart-item img {
   width: 100px; 
   border-radius: 10px;
