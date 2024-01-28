@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import axios from "axios";
 import { getTotalPrice, getCartItems, clearCart } from "../redux/cartSlice";
@@ -9,46 +9,49 @@ const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
   const totalPrice = useSelector(getTotalPrice);
-  const cartItems = useSelector(getCartItems)
+  const cartItems = useSelector(getCartItems);
   const amount = totalPrice * 100;
   const { isAuthenticated, user } = useAuth0();
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-
   const closeModal = async () => {
     setIsModalOpen(false);
     if (!isAuthenticated) {
-        localStorage.removeItem("cart");
-        dispatch(clearCart());
-      }
+      localStorage.removeItem("cart");
+      dispatch(clearCart());
+    }
 
-    if(isAuthenticated){
-        try{
-            const response = await fetch("https://poirot-m4bt.onrender.com/purchase/" + user.sub, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({purchases: cartItems }),
-        });
+    if (isAuthenticated) {
+      try {
+        const purchaseData = {
+            purchases: [{
+                items: cartItems
+            }]
+        };
+
+        const response = await fetch(
+          "https://poirot-m4bt.onrender.com/purchase/" + user.sub,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(purchaseData),
+          }
+        );
 
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
 
         localStorage.removeItem("cart");
-      dispatch(clearCart());
+        dispatch(clearCart());
       } catch (error) {
         console.error("Error updating purchase history:", error);
       }
-
-      
-        }
-    
+    }
   };
-
-  console.log(cartItems)
 
 
   const handleSubmit = async (event) => {
