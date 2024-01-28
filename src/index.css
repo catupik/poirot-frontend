@@ -1217,7 +1217,9 @@ option {
   #bookingForm select,
   #bookingForm textarea {
     padding: 8px;
+    border-radius: 0;
   }
+
 
  
   #bookingForm label, .btn.case {
