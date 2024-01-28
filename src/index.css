@@ -1270,19 +1270,20 @@ option {
   padding: 0.5rem;
   display: flex; 
   align-items: center; 
- 
+  margin-left: 0;
+  padding-left: 0; 
 }
 
 .purchase-item{
   border-bottom: 1px solid #cdaa5f; 
 }
-.cart-item-purchase  img {
+.cart-item-purchase img {
   width: 100px; 
   border-radius: 10px;
   margin-right: 0.5rem; 
 }
 .purchase-date, .account-container h2{
-  margin-left: 2rem;
+  margin-left: 2.5rem;
 }
 
 }
