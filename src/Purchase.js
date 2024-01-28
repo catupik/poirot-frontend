@@ -12,6 +12,7 @@ const Purchase = ({ purchase }) => {
   return (
     <div key={purchase._id} className="purchase-item">
       <h3 className="purchase-date">Purchase Date: {purchaseDate}</h3>
+      <h3 className="purchase-date">Total: ${item.totalPrice}</h3>
       <ul className="purchase-list">
         {purchase.items.map((item) => {
           const product = dataItems.find((prod) => prod.id === item.itemId);
@@ -26,9 +27,10 @@ const Purchase = ({ purchase }) => {
                 />
             </div>
             <div className="cart-item-info">
-                <strong>{product.name}</strong> - {item.quantity} pcs.
+                <strong>{product.name}</strong>
+                <br/> {item.quantity} pcs.
                 <br />Price: ${item.pricePerItem}
-                <br />Total: ${item.totalPrice}
+                
             </div>
         </li>
           );
