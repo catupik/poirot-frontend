@@ -39,7 +39,7 @@ const CheckoutForm = () => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
-
+        console.log("Purchase history updated successfully");
         localStorage.removeItem("cart");
         dispatch(clearCart());
       } catch (error) {
