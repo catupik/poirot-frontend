@@ -255,6 +255,7 @@ body{
 .contactme {
   display: flex;
   justify-content: center;
+  margin-top: 2rem;
 }
 
 /* BUTTONS */
