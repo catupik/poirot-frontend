@@ -22,6 +22,22 @@ const CheckoutForm = () => {
       dispatch(clearCart());
     }
 
+    const cardElementOptions = {
+      style: {
+        base: {
+          color: "#fff", 
+          fontSize: "1rem",
+          "::placeholder": {
+            color: "#aab7c4"
+          }
+        },
+        invalid: {
+          color: "#fa755a",
+          iconColor: "#fa755a"
+        }
+      }
+    };  
+
     if (isAuthenticated) {
       try {
         
@@ -81,10 +97,12 @@ const CheckoutForm = () => {
       console.log("Stripe error:", error.message);
     }
   };
+
+
   return (
     <div>
       <form onSubmit={handleSubmit} style={{ maxWidth: 400 }}>
-        <CardElement />
+        <CardElement options={cardElementOptions}/>
         <button className="btn">Check out</button>
       </form>
 
