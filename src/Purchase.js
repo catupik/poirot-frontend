@@ -1,25 +1,37 @@
+import dataItems from "./data/dataItems";
 
-const Purchase = ({purchase}) =>{
-    if (!purchase || !purchase.items) {
-        return <div>Loading...</div>;
-    }
+const Purchase = ({ purchase }) => {
+  if (!purchase || !purchase.items) {
+    return <div>Loading...</div>;
+  }
 
-    const purchaseDate = new Date(purchase.purchaseDate).toLocaleDateString('en-US');
-   
-    return(
+  const purchaseDate = new Date(purchase.purchaseDate).toLocaleDateString(
+    "en-GB"
+  );
 
-        <div key={purchase._id}>
-        <h3>Purchase Date: {purchaseDate}</h3>
-        <ul>
-          {purchase.items.map((item) => (
+  return (
+    <div key={purchase._id}>
+      <h3>Purchase Date: {purchaseDate}</h3>
+      <ul>
+        {purchase.items.map((item) => {
+          const product = dataItems.find((prod) => prod.id === item.itemId);
+
+          return (
             <li key={item._id}>
-              Item ID: {item.itemId}, Quantity: {item.quantity}, 
-              Price Per Item: ${item.pricePerItem}, 
+              <img
+                src={`/items/${product.image}.jpg`}
+                alt={product.name}
+                width="25"
+                height="25"
+              />
+              <strong>{product.name}</strong> - Quantity: {item.quantity}, 
+              Price: ${item.pricePerItem}, 
               Total Price: ${item.totalPrice}
             </li>
-          ))}
-        </ul>
-      </div>
-    )
-}
+          );
+        })}
+      </ul>
+    </div>
+  );
+};
 export default Purchase;

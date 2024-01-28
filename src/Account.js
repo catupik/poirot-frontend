@@ -66,7 +66,7 @@ function Account() {
     }
   };
 
-  console.log(purchaseHistory)
+  
 
   return (
     <div className="account-container">
