@@ -680,8 +680,8 @@ option {
   font-family: "Poiret One", sans-serif;
   width: 50px; 
   padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid gold;
+  /* margin-bottom: 15px; */
+  /* border: 1px solid gold; */
   background-color: transparent;
   color: white;
   text-align: center;
