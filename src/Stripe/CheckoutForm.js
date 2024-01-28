@@ -15,28 +15,28 @@ const CheckoutForm = () => {
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const cardElementOptions = {
+    style: {
+      base: {
+        color: "#fff", 
+        fontSize: "1rem",
+        "::placeholder": {
+          color: "#aab7c4"
+        }
+      },
+      invalid: {
+        color: "#fa755a",
+        iconColor: "#fa755a"
+      }
+    }
+  };  
+
   const closeModal = async () => {
     setIsModalOpen(false);
     if (!isAuthenticated) {
       localStorage.removeItem("cart");
       dispatch(clearCart());
     }
-
-    const cardElementOptions = {
-      style: {
-        base: {
-          color: "#fff", 
-          fontSize: "1rem",
-          "::placeholder": {
-            color: "#aab7c4"
-          }
-        },
-        invalid: {
-          color: "#fa755a",
-          iconColor: "#fa755a"
-        }
-      }
-    };  
 
     if (isAuthenticated) {
       try {
