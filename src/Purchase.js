@@ -34,7 +34,7 @@ const Purchase = ({ purchase }) => {
                 <strong>{product.name}</strong>
                 <br/> {item.quantity} pcs.
                 <br />Price: £{item.pricePerItem}
-                {/* <br/> Total: £{item.totalPrice} */}
+                <br/> Total: £{item.totalPrice}
                 
             </div>
         </li>
