@@ -797,8 +797,12 @@ option {
   justify-content: space-between; 
 }
 
-.cart-item .purchase{
-  border-bottom: none; 
+.cart-item-purchase{
+ 
+  padding: 15px 0;
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
 }
 
 .purchase-item{
