@@ -675,8 +675,15 @@ option {
  align-items: center;
 }
 
-.change-block p {
-   font-weight: bold;
+.quantity-input {
+  font-family: "Poiret One", sans-serif;
+  width: 1rem; 
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #cdaa5f;
+  background-color: transparent;
+  color: white;
+  text-align: center;
 }
   .service-btn:hover {
     transform: scale(1.1);
