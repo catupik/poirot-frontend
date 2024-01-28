@@ -19,7 +19,7 @@ const Purchase = ({ purchase }) => {
           return (
             <li key={item._id}>
               <img
-                src={`/items/${product.image}.jpg`}
+                src={`items/${product.image}.jpeg`}
                 alt={product.name}
                 width="25"
                 height="25"
