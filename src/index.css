@@ -1267,10 +1267,10 @@ option {
 
 .cart-item-purchase{
  
-  padding: 0rem;
+  padding: 0.5rem;
   display: flex; 
   align-items: center; 
-  justify-content: space-between; 
+ 
 }
 
 .purchase-item{
@@ -1279,7 +1279,7 @@ option {
 .cart-item-purchase  img {
   width: 100px; 
   border-radius: 10px;
-  margin-right: 0rem; 
+  margin-right: 0.5rem; 
 }
 .purchase-date, .account-container h2{
   margin-left: 2rem;
