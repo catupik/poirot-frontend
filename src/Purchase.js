@@ -1,5 +1,9 @@
 
 const Purchase = (purchase) =>{
+    if (!purchase || !purchase.items) {
+        return <div>Loading...</div>;
+    }
+
     const purchaseDate = new Date(purchase.purchaseDate).toLocaleDateString('en-US');
 
     return(
