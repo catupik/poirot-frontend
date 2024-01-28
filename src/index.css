@@ -252,6 +252,11 @@ body{
  
 }
 
+.contactme {
+  display: flex;
+  justify-content: center;
+}
+
 /* BUTTONS */
 .btn {
   font-family: "Poiret One", sans-serif;

@@ -162,9 +162,11 @@ function Home() {
           </div>
         </div>
       </div>
-      <button className="btn near-picture" onClick={() => navigate("/contact")}>
+      <div className="contactme">
+      <button className="btn" onClick={() => navigate("/contact")}>
             Contact me
           </button>
+          </div>
 
           <div className="social">
           <a
