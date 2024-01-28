@@ -809,7 +809,7 @@ option {
   border-bottom: 1px solid #cdaa5f; 
 }
 
-.cart-item img {
+.cart-item img,.cart-item-purchase  img {
   width: 100px; 
   border-radius: 10px;
   margin-right: 20px; 
