@@ -685,6 +685,7 @@ option {
   color: white;
   text-align: center;
   font-weight: bold;
+  border-radius: 0px;
 }
   .service-btn:hover {
     transform: scale(1.1);
