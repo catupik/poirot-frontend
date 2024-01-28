@@ -1101,6 +1101,10 @@ option {
     margin-top: -2rem;    
   }
 
+  .cartquantity span {
+    margin-top: -10px;
+  }
+
   .service img {
     width: 200px
   }
