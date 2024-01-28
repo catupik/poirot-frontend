@@ -12,13 +12,15 @@ const Purchase = ({ purchase }) => {
   return (
     <div key={purchase._id} className="purchase-item">
       <h3 className="purchase-date">Purchase Date: {purchaseDate}</h3>
-      <h3 className="purchase-date">Total: ${item.totalPrice}</h3>
+      
       <ul className="purchase-list">
         {purchase.items.map((item) => {
           const product = dataItems.find((prod) => prod.id === item.itemId);
 
           return (
             <li key={item._id} className="cart-item-purchase">
+            <h3 className="purchase-date">Total: ${item.totalPrice}</h3>
+
             <div className="purchase-item-image-block">
                 <img
                     src={`items/${product.image}.jpeg`}
