@@ -680,10 +680,11 @@ option {
   width: 50px; 
   padding: 10px;
   margin-bottom: 15px;
-  border: 1px solid #cdaa5f;
+  border: 1px solid gold;
   background-color: transparent;
   color: white;
   text-align: center;
+  font-weight: bold;
 }
   .service-btn:hover {
     transform: scale(1.1);
