@@ -1262,4 +1262,27 @@ option {
   .footer p {
     font-size: 0.5rem;
   }
+
+  /* PURCHASE */
+
+.cart-item-purchase{
+ 
+  padding: 0rem;
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+}
+
+.purchase-item{
+  border-bottom: 1px solid #cdaa5f; 
+}
+.cart-item-purchase  img {
+  width: 100px; 
+  border-radius: 10px;
+  margin-right: 0rem; 
+}
+.purchase-date, .account-container h2{
+  margin-left: 2rem;
+}
+
 }
