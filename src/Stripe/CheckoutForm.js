@@ -24,12 +24,7 @@ const CheckoutForm = () => {
 
     if (isAuthenticated) {
       try {
-        const purchaseData = {
-            purchases: [{
-                items: cartItems
-            }]
-        };
-
+        
         const response = await fetch(
           "https://poirot-m4bt.onrender.com/purchase/" + user.sub,
           {
@@ -37,7 +32,7 @@ const CheckoutForm = () => {
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify(purchaseData),
+            body: JSON.stringify({ items: cartItems }),
           }
         );
 
