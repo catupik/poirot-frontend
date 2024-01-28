@@ -1226,6 +1226,9 @@ option {
     font-size: 1rem;
   }
 
+  .btn.case{
+    border-radius: 0;
+  }
   
   .modal-content {
     width: 100%; 
