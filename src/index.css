@@ -677,9 +677,9 @@ option {
 
 .quantity-input {
   font-family: "Poiret One", sans-serif;
-  width: 1rem; 
-  padding: 1rem;
-  margin-bottom: 1rem;
+  width: 50px; 
+  padding: 10px;
+  margin-bottom: 15px;
   border: 1px solid #cdaa5f;
   background-color: transparent;
   color: white;
