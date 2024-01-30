@@ -7,7 +7,7 @@ import PoirotMap from "./PoirotMap";
 function Cases() {
   const [cases, setCase] = useState(0);
   const { name, description, year, image } = data[cases];
-
+  const [currentImage, setCurrentImage] = useState(data[0].image);
   const introRef = useRef(null);
   const otherSectionsRefs = useRef([]);
   otherSectionsRefs.current = [];
@@ -29,20 +29,32 @@ function Cases() {
   };
 
   useEffect(() => {
-    
+   
     gsap.to(imageRef.current, {
       opacity: 0,
-      x: -100,
-      duration: 0.5, 
+      duration: 0.5,
+      onComplete: () => {
+        
+        if (imageRef.current) {
+          
+          imageRef.current.src = `/cases/${data[cases].image}.jpeg`;
+  
+          
+          gsap.to(imageRef.current, { opacity: 1, duration: 0.5 });
+        }
+      },
     });
 
-    gsap.to(imageRef.current, {
-      opacity: 1,
-      x: 0,
-      duration: 1,
-      ease: "power3.out" 
-    });
+
+    if (descriptionRef.current) {
+      gsap.fromTo(descriptionRef.current, 
+        { delay:1.5, opacity: 0,  }, 
+        {  opacity: 1,  duration: 2, ease: "power3.out", }
+      );
+    }
   }, [cases]);
+
+  
   
   useEffect(() => {
   
@@ -73,9 +85,7 @@ function Cases() {
       );
     });
   
-    if (descriptionRef.current) {
-      gsap.fromTo(descriptionRef.current, { opacity: 0 }, { opacity: 1, duration: 2, ease: "power2.out" });
-    }
+   
   }, []);
 
   return (
@@ -149,12 +159,12 @@ function Cases() {
       </div>
 
       <img
-        src={`/cases/${image}.jpeg`}
-        alt="case"
-        width="400"
-        className="case-image"
-        ref={imageRef}
-      />
+  src={`/cases/${currentImage}.jpeg`}
+  alt="case"
+  width="400"
+  className="case-image"
+  ref={imageRef}
+/>
 
       <p className="case-description" ref={descriptionRef}>
         {description}
