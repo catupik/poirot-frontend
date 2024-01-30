@@ -30,11 +30,18 @@ function Cases() {
 
   useEffect(() => {
     
-    gsap.fromTo(
-      imageRef.current,
-      { opacity: 0, x: 100 },
-      { opacity: 1, x: 0, duration: 1 }
-    );
+    gsap.to(imageRef.current, {
+      opacity: 0,
+      x: -100,
+      duration: 0.5, 
+    });
+
+    gsap.to(imageRef.current, {
+      opacity: 1,
+      x: 0,
+      duration: 1,
+      ease: "power3.out" 
+    });
   }, [cases]);
   
   useEffect(() => {
