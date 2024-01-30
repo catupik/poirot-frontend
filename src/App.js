@@ -9,6 +9,7 @@ import Home from "./Home";
 import Cart from "./Components/Cart/Cart"
 import Account from "./Account";
 import { useAuth0 } from "@auth0/auth0-react";
+import { gsap } from 'gsap';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { updateCartFromLocalStorage } from './redux/cartSlice';
@@ -31,6 +32,9 @@ function App() {
   const audioRef = useRef(null);
  
  
+  useEffect(() => {
+    gsap.from(".nav", { duration: 6, opacity: 0, ease: "power3.out" });
+  }, []);
 
   useEffect(()=>{
     setTimeout(()=>{
