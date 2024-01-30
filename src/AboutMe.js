@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import React, { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
+// import React, { useEffect, useRef } from 'react';
+// import { gsap } from 'gsap';
 
 function AboutMe() {
   const navigate = useNavigate();
