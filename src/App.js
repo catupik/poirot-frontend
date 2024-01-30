@@ -10,6 +10,7 @@ import Cart from "./Components/Cart/Cart"
 import Account from "./Account";
 import { useAuth0 } from "@auth0/auth0-react";
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { updateCartFromLocalStorage } from './redux/cartSlice';
@@ -19,7 +20,7 @@ import Loader from "./Loader/Loader";
 import Footer from "./Footer";
 import music from './poirot.mp3'
 
-
+gsap.registerPlugin(ScrollTrigger);
 
 function App() {
   const { loginWithRedirect, isAuthenticated, logout, user} = useAuth0();
@@ -33,10 +34,40 @@ function App() {
   const navRef = useRef(null);
  
   useEffect(() => {
-    if (navRef.current) {
-      gsap.from(navRef.current, { duration: 6, opacity: 0, ease: "power3.out" });
+    if (!loading) {
+      gsap.fromTo(".nav .Link:not(.poirotLink)", 
+        { opacity: 0 }, // start from
+        { 
+          duration: 0.5,
+          opacity: 1, // finish to
+          stagger: 0.2,
+          ease: "power1.out",
+          delay: 0.5 
+        }
+      );
+  
+      // gsap.fromTo(".nav .poirotLink, .nav .motto", 
+      //   { opacity: 0 }, 
+      //   {
+      //     duration: 1,
+      //     opacity: 1, 
+      //     ease: "power1.out",
+      //     delay: 2.5
+      //   }
+      // );
+      gsap.fromTo(".nav .poirotLink, .nav .motto", 
+      { opacity: 0, y: -50 }, 
+      {
+        duration: 1,
+        opacity: 1,
+        y: 0, 
+        ease: "power1.out",
+        delay: 1.5 
+      }
+    );
     }
-  }, []);
+  }, [loading]);
+  
 
   useEffect(()=>{
     setTimeout(()=>{
@@ -155,10 +186,13 @@ function App() {
       <NavLink className={({ isActive }) => isActive ? 'Link activeLink' : 'Link'}  to="/shop">SHOP</NavLink>
       <NavLink className={({ isActive }) => isActive ? 'Link activeLink' : 'Link'}  to="/cart">CART</NavLink>
       <NavLink className={({ isActive }) => isActive ? 'Link activeLink' : 'Link'} to='/myaccount'>ACCOUNT </NavLink>
+      <NavLink className='Link'>
       <button className="music" onClick={togglePlay}>
       {isPlaying ? <img className="music-btn" src="/account/play.png" alt="play" width='30'/> : <img className="music-btn" src="/account/noplay.png" alt="pause" width='30'/>  }
       </button>
      <audio ref={audioRef} src={music} loop/>
+      </NavLink>
+     
       {!isAuthenticated &&(
         <NavLink className='Link' to="/login"
       onClick={loginWithRedirect}>LOG IN</NavLink>

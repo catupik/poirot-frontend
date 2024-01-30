@@ -1,7 +1,21 @@
 import { useNavigate } from "react-router-dom";
+import React, { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
 
 function AboutMe() {
   const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   gsap.from(".about-section", {
+  //     scrollTrigger: {
+  //       trigger: ".about-section",
+  //       start: "top 20%", 
+  //     },
+  //     opacity: 0,
+  //     y: 50,
+  //     duration: 1
+  //   });
+  // }, []);
   return (
     <div className="about-container">
       <div className="about-section">
