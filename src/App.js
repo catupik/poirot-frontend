@@ -10,7 +10,7 @@ import Cart from "./Components/Cart/Cart"
 import Account from "./Account";
 import { useAuth0 } from "@auth0/auth0-react";
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 
 import { useSelector, useDispatch } from 'react-redux';
 import { updateCartFromLocalStorage } from './redux/cartSlice';
@@ -20,7 +20,7 @@ import Loader from "./Loader/Loader";
 import Footer from "./Footer";
 import music from './poirot.mp3'
 
-gsap.registerPlugin(ScrollTrigger);
+
 
 function App() {
   const { loginWithRedirect, isAuthenticated, logout, user} = useAuth0();

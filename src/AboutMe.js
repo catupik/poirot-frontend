@@ -1,24 +1,61 @@
 import { useNavigate } from "react-router-dom";
-// import React, { useEffect, useRef } from 'react';
-// import { gsap } from 'gsap';
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 function AboutMe() {
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   gsap.from(".about-section", {
-  //     scrollTrigger: {
-  //       trigger: ".about-section",
-  //       start: "top 20%", 
-  //     },
-  //     opacity: 0,
-  //     y: 50,
-  //     duration: 1
-  //   });
-  // }, []);
+  const sectionRefs = useRef([]);
+  sectionRefs.current = [];
+
+  const firstSectionRef = useRef(null);
+
+  const addToRefs = (el) => {
+    if (el && !sectionRefs.current.includes(el)) {
+      sectionRefs.current.push(el);
+    }
+  };
+
+
+
+  useEffect(() => {
+
+    if (firstSectionRef.current) {
+      gsap.fromTo(
+        firstSectionRef.current,
+        { opacity: 0 },
+        { opacity: 1, y: 0, duration: 2,  delay: 0.5 }
+      );
+    }
+    const revealSections = () => {
+      sectionRefs.current.forEach((el, index) => {
+        gsap.fromTo(
+          el,
+          { opacity: 0 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 2,
+            ease: "power2.out",
+            delay: 0.5,
+            scrollTrigger: {
+              trigger: el,
+              start: "top 80%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      });
+    };
+
+    gsap.registerPlugin(ScrollTrigger);
+    revealSections();
+  }, []);
+
   return (
     <div className="about-container">
-      <div className="about-section">
+      <div className="about-section one" ref={addToRefs}>
         <img src="/about/brussel.jpeg" alt="brussel" width="400px" />
         <p>
           I am originally from Belgium, and my career as a detective began in
@@ -32,7 +69,7 @@ function AboutMe() {
         </p>
       </div>
 
-      <div className="definder">
+      <div className="definder" ref={addToRefs}>
         <img
           src="/about/definder-PhotoRoom.png-PhotoRoom.png"
           width="500px"
@@ -40,7 +77,7 @@ function AboutMe() {
         />
       </div>
 
-      <div className="about-section reverse">
+      <div className="about-section reverse two" ref={addToRefs}>
         <p>
           My analytical skills and keen observation have made me one of the most
           respected detectives. Each case I have undertaken has been unique and
@@ -48,14 +85,17 @@ function AboutMe() {
           intellect. Some of my most famous cases include "Murder on the Orient
           Express," "Death on the Nile," and "The Mystery of End House."
           <br />
-          <button className="btn near-picture" onClick={() => navigate("/cases")}>
+          <button
+            className="btn near-picture"
+            onClick={() => navigate("/cases")}
+          >
             Cases
           </button>
         </p>
         <img src="/about/express.jpeg" alt="express" width="400px" />
       </div>
 
-      <div className="definder">
+      <div className="definder" ref={addToRefs}>
         <img
           src="/about/definder-PhotoRoom.png-PhotoRoom.png"
           width="500px"
@@ -63,7 +103,7 @@ function AboutMe() {
         />
       </div>
 
-      <div className="about-section">
+      <div className="about-section three" ref={addToRefs}>
         <img src="/about/society.jpeg" alt="society" width="400px" />
         <p>
           Not merely a detective, but also a person of subtle intellect and
@@ -84,7 +124,7 @@ function AboutMe() {
         </p>
       </div>
 
-      <div className="definder">
+      <div className="definder" ref={addToRefs}>
         <img
           src="/about/definder-PhotoRoom.png-PhotoRoom.png"
           width="500px"
@@ -92,7 +132,7 @@ function AboutMe() {
         />
       </div>
 
-      <div className="about-section reverse">
+      <div className="about-section reverse four" ref={addToRefs}>
         <p>
           Additionally, I am known for my love of travel. My investigations are
           not confined to the borders of a single country, allowing me to gain
@@ -106,7 +146,10 @@ function AboutMe() {
           often turns out to be more complex and ambiguous than it appears at
           first glance.
           <br />
-          <button className="btn near-picture" onClick={() => navigate("/contact")}>
+          <button
+            className="btn near-picture"
+            onClick={() => navigate("/contact")}
+          >
             Contact me
           </button>
         </p>

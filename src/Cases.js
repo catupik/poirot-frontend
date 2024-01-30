@@ -1,4 +1,6 @@
-import { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import data from "./data/dataCases";
 import PoirotMap from "./PoirotMap";
 
@@ -6,29 +8,71 @@ function Cases() {
   const [cases, setCase] = useState(0);
   const { name, description, year, image } = data[cases];
 
-  const previousCase = () => {
-    setCase((cases) => {
-      cases--;
+  const introRef = useRef(null);
+  const otherSectionsRefs = useRef([]);
+  otherSectionsRefs.current = [];
 
-      if (cases < 0) {
-        return data.length - 1;
-      }
-      return cases;
-    });
+  const imageRef = useRef();
+  const descriptionRef = useRef();
+  const addToRefs = (el) => {
+    if (el && !otherSectionsRefs.current.includes(el)) {
+      otherSectionsRefs.current.push(el);
+    }
+  };
+
+  const previousCase = () => {
+    setCase((prevCases) => (prevCases === 0 ? data.length - 1 : prevCases - 1));
   };
 
   const nextCase = () => {
-    setCase((cases) => {
-      cases++;
-      if (cases > data.length - 1) {
-        cases = 0;
-      }
-      return cases;
-    });
+    setCase((prevCases) => (prevCases === data.length - 1 ? 0 : prevCases + 1));
   };
 
+  useEffect(() => {
+    
+    gsap.fromTo(
+      imageRef.current,
+      { opacity: 0, x: 100 },
+      { opacity: 1, x: 0, duration: 1 }
+    );
+  }, [cases]);
+  
+  useEffect(() => {
+  
+    gsap.registerPlugin(ScrollTrigger);
+  
+    if (introRef.current) {
+      gsap.fromTo(
+        introRef.current,
+        { opacity: 0 },
+        { opacity: 1, duration: 2, ease: "power2.out", delay: 0.5 }
+      );
+    }
+  
+    otherSectionsRefs.current.forEach((el) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    });
+  
+    if (descriptionRef.current) {
+      gsap.fromTo(descriptionRef.current, { opacity: 0 }, { opacity: 1, duration: 2, ease: "power2.out" });
+    }
+  }, []);
+
   return (
-    <div className="cases-container">
+    <div className="cases-container" ref={introRef}>
       <div className="intro-text">
         <p>
           Chers amis, <br />
@@ -57,7 +101,7 @@ function Cases() {
         <PoirotMap />
       </div>
 
-      <div className="definder">
+      <div className="definder" ref={addToRefs}>
         <img
           src="/about/definder-PhotoRoom.png-PhotoRoom.png"
           width="500px"
@@ -65,7 +109,7 @@ function Cases() {
         />
       </div>
 
-      <div className="case-image-set">
+      <div className="case-image-set" ref={addToRefs}>
         <div className="intro-text">
           <p>
             Below, you will find a selection of some of my most intriguing
@@ -102,9 +146,12 @@ function Cases() {
         alt="case"
         width="400"
         className="case-image"
+        ref={imageRef}
       />
 
-      <p className="case-description">{description}</p>
+      <p className="case-description" ref={descriptionRef}>
+        {description}
+      </p>
     </div>
   );
 }
