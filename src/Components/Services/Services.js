@@ -3,13 +3,66 @@ import { useSelector } from "react-redux";
 import AllCategories from "../Filter/AllCategories";
 import Service from "./Service";
 import dataService from "../../data/dataServices";
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+
 
 function Services() {
   const selectedCategory = useSelector(getSelectedCategory);
+  const introRef = useRef(null);
+  const allCategoriesRef = useRef(null);
+  const serviceRefs = useRef([]);
+  serviceRefs.current = [];
+
+
+  const addToRefs = (el) => {
+    if (el && !serviceRefs.current.includes(el)) {
+      serviceRefs.current.push(el);
+    }
+  };
+
+  useEffect(() => {
+    
+    [introRef, allCategoriesRef].forEach(ref => {
+      if (ref.current) {
+        gsap.fromTo(
+          ref.current,
+          { opacity: 0 },
+          { opacity: 1, duration: 2, delay: 0.5 }
+        );
+      }
+    });
+
+   
+    gsap.registerPlugin(ScrollTrigger);
+
+   
+    serviceRefs.current.forEach((el) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 2,
+          ease: "power2.out",
+          
+          scrollTrigger: {
+            trigger: el,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    });
+  }, []);
+
+
 
   return (
     <div className="cases-container">
-      <p className="intro-text">
+      <p className="intro-text" ref={introRef}>
         Chers clients, <br />
         <br />
         Welcome to my world of investigations, where every mystery requires
@@ -40,8 +93,10 @@ function Services() {
         Sincerely, <br />
         Hercule Poirot
       </p>
-
-      <AllCategories />
+    <div ref={allCategoriesRef}>
+    <AllCategories />
+    </div>
+     
 
       <div className="allServices">
         {dataService
@@ -50,7 +105,9 @@ function Services() {
             return selectedCategory === service.category;
           })
           .map((service) => (
+            <div ref={addToRefs}>
             <Service key={service.id} service={service} />
+            </div>
           ))}
       </div>
     </div>
