@@ -6,7 +6,9 @@ import PoirotMap from "./PoirotMap";
 
 function Cases() {
   const [cases, setCase] = useState(0);
+  // eslint-disable-next-line 
   const { name, description, year, image } = data[cases];
+  // eslint-disable-next-line 
   const [currentImage, setCurrentImage] = useState(data[0].image);
   const introRef = useRef(null);
   const otherSectionsRefs = useRef([]);
