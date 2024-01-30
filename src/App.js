@@ -30,10 +30,12 @@ function App() {
   const MY_URL = 'https://poirot-m4bt.onrender.com';
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
- 
+  const navRef = useRef(null);
  
   useEffect(() => {
-    gsap.from(".nav", { duration: 6, opacity: 0, ease: "power3.out" });
+    if (navRef.current) {
+      gsap.from(navRef.current, { duration: 6, opacity: 0, ease: "power3.out" });
+    }
   }, []);
 
   useEffect(()=>{
@@ -137,7 +139,7 @@ function App() {
   return(
   <Router>
     
-    <nav className="nav">
+    <nav className="nav" ref={navRef}>
       
     <NavLink className={({ isActive }) => isActive ? 'Link activeLink' : 'Link'} to="/about">ABOUT</NavLink>      
     <NavLink className={({ isActive }) => isActive ? 'Link activeLink' : 'Link'}  to="/cases">CASES</NavLink>
