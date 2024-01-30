@@ -1,7 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import dataService from "././data/dataServices";
 import { useAuth0 } from "@auth0/auth0-react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 function ContactMe() {
   const { isAuthenticated, user } = useAuth0();
@@ -14,6 +16,41 @@ function ContactMe() {
   const [caseDescription, setCaseDescription] = useState("");
   const [consultationType, setConsultationType] = useState("online");
   const [email, setEmail] = useState("");
+
+  const introTextRef = useRef(null);
+  const formRef = useRef(null);
+  const socialIconsRef = useRef(null);
+
+
+ useEffect(() => {
+  gsap.registerPlugin(ScrollTrigger);
+  if (introTextRef.current) {
+    gsap.fromTo(introTextRef.current, { opacity: 0 }, { opacity: 1, duration: 2 });
+  }
+
+  [formRef, socialIconsRef].forEach(ref => {
+    if (ref.current) {
+      gsap.fromTo(
+        ref.current,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ref.current,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+  });
+}, []);
+
+
+
 
   useEffect(() => {
     if (selectedService) {
@@ -72,7 +109,7 @@ function ContactMe() {
 
   return (
     <div className="cases-container">
-      <div className="intro-text">
+      <div className="intro-text" ref={introTextRef}>
         <p>
           Dear ladies and gentlemen, <br />
           <br />
@@ -104,7 +141,7 @@ function ContactMe() {
           <strong className="strong">Social Networks:</strong> Join me on social
           networks to get the latest information. <br />
         </p>
-        <div className="social">
+        <div className="social" ref={socialIconsRef}>
           <a
             href="https://www.facebook.com/"
             target="_blank"
@@ -175,6 +212,7 @@ function ContactMe() {
         action="/contact"
         id="bookingForm"
         onSubmit={handleSubmit}
+        ref={formRef}
       >
         <label htmlFor="name">Name:</label>
         <input
