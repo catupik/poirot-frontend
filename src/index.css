@@ -1312,7 +1312,7 @@ option {
   border-radius: 10px;
   margin-right: 0.5rem; 
 }
-.purchase-date, .purchhistory{
+.purchase-date, .account-container.purchhistory{
   margin-left: 2.3rem;
 }
 
