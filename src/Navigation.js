@@ -1,10 +1,29 @@
 import { NavLink } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import { getTotalItems } from "./redux/cartSlice";
-
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
 import music from './poirot.mp3'
 
 const Navigation = ({ isMenuOpen, toggleMenu, isAuthenticated, loginWithRedirect, handleLogOut, togglePlay, isPlaying, audioRef }) => {
+    
+    const menuRef = useRef();
+   
+    useEffect(() => {
+        if(isMenuOpen) {
+            gsap.fromTo(menuRef.current, 
+                { top: '-100%' }, 
+                { top: '0%', duration: 0.7, ease: "power3.inOut" }
+            );
+        } else {
+            gsap.fromTo(menuRef.current, 
+                { top: '0%' }, 
+                { top: '-100%', duration: 0.5, ease: "power3.inOut" }
+            );
+        }
+    }, [isMenuOpen]);
+
+    
     const handleLinkClick = () => {
         toggleMenu();
     };
@@ -28,7 +47,7 @@ const Navigation = ({ isMenuOpen, toggleMenu, isAuthenticated, loginWithRedirect
                     </div>
             </div>
             
-            <div className={isMenuOpen ? "nav-links active" : "nav-links"}>
+            <div  ref={menuRef} className={isMenuOpen ? "nav-links active" : "nav-links"}>
                 <NavLink className='Link' to="/" onClick={handleLinkClick}>HOME</NavLink>
                 <NavLink className='Link' to="/about" onClick={handleLinkClick}>ABOUT</NavLink>
                 <NavLink className='Link' to="/cases" onClick={handleLinkClick}>CASES</NavLink>
