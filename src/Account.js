@@ -1,6 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { useState, useEffect } from "react";
-import { useEffect, useRef } from "react";
+import { useState, useEffect,  useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Purchase from "./Purchase";
