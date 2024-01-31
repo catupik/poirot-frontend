@@ -59,23 +59,23 @@ function Cases() {
   
   
   useEffect(() => {
-  
     gsap.registerPlugin(ScrollTrigger);
-  
+    
+   
     if (introRef.current) {
       gsap.fromTo(
         introRef.current,
-        { opacity: 0 },
-        { opacity: 1, duration: 2, ease: "power2.out", delay: 0.5 }
-      );
+        { opacity: 0, y: -30 }, 
+        { opacity: 1, y: 0, duration: 2, ease: "power2.out" } )
     }
-  
+    
     otherSectionsRefs.current.forEach((el) => {
       gsap.fromTo(
         el,
-        { opacity: 0 },
+        { opacity: 0, y: 30 },
         {
           opacity: 1,
+          y: 0,
           duration: 2,
           ease: "power2.out",
           scrollTrigger: {
@@ -86,8 +86,6 @@ function Cases() {
         }
       );
     });
-  
-   
   }, []);
 
   return (

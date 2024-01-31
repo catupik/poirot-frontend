@@ -6,51 +6,49 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 function AboutMe() {
   const navigate = useNavigate();
 
-  const sectionRefs = useRef([]);
-  sectionRefs.current = [];
-
   const firstSectionRef = useRef(null);
+  const otherSectionsRefs = useRef([]);
+  otherSectionsRefs.current = [];
 
   const addToRefs = (el) => {
-    if (el && !sectionRefs.current.includes(el)) {
-      sectionRefs.current.push(el);
+    if (el && !otherSectionsRefs.current.includes(el)) {
+      otherSectionsRefs.current.push(el);
     }
   };
 
 
 
-  useEffect(() => {
 
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+ 
     if (firstSectionRef.current) {
       gsap.fromTo(
         firstSectionRef.current,
-        { opacity: 0 },
-        { opacity: 1, y: 0, duration: 2,  delay: 0.5 }
+        { opacity: 0, y: -50 },
+        { opacity: 1, y: 0, duration: 2 }
       );
     }
-    const revealSections = () => {
-      sectionRefs.current.forEach((el, index) => {
-        gsap.fromTo(
-          el,
-          { opacity: 0 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 2,
-            ease: "power2.out",
-            delay: 0.5,
-            scrollTrigger: {
-              trigger: el,
-              start: "top 80%",
-              toggleActions: "play none none none",
-            },
-          }
-        );
-      });
-    };
 
-    gsap.registerPlugin(ScrollTrigger);
-    revealSections();
+  
+    otherSectionsRefs.current.forEach((el) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    });
   }, []);
 
   return (

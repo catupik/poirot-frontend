@@ -25,29 +25,32 @@ function Services() {
 
   useEffect(() => {
     
-    [introRef, allCategoriesRef].forEach(ref => {
-      if (ref.current) {
-        gsap.fromTo(
-          ref.current,
-          { opacity: 0 },
-          { opacity: 1, duration: 2, delay: 0.5 }
-        );
-      }
-    });
-
-   
     gsap.registerPlugin(ScrollTrigger);
 
-   
+    
+    gsap.fromTo(
+      introRef.current,
+      { opacity: 0, y: -50 },
+      { opacity: 1, y: 0, duration: 2 }
+    );
+  
+    
+    gsap.fromTo(
+      allCategoriesRef.current,
+      { opacity: 0, y: 50 },
+      { opacity: 1, y: 0, duration: 2 }
+    );
+  
+    
     serviceRefs.current.forEach((el) => {
       gsap.fromTo(
         el,
-        { opacity: 0 },
+        { opacity: 0, y: 30 },
         {
           opacity: 1,
+          y: 0,
           duration: 2,
           ease: "power2.out",
-          
           scrollTrigger: {
             trigger: el,
             start: "top 80%",

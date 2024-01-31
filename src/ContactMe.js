@@ -21,36 +21,37 @@ function ContactMe() {
   const formRef = useRef(null);
   const socialIconsRef = useRef(null);
 
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
 
- useEffect(() => {
-  gsap.registerPlugin(ScrollTrigger);
-  if (introTextRef.current) {
-    gsap.fromTo(introTextRef.current, { opacity: 0 }, { opacity: 1, duration: 2 });
-  }
+    gsap.fromTo(
+      introTextRef.current,
+      { opacity: 0, y: -50 },
+      { opacity: 1, y: 0, duration: 2 }
+    );
 
-  [formRef, socialIconsRef].forEach(ref => {
-    if (ref.current) {
-      gsap.fromTo(
-        ref.current,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 2,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: ref.current,
-            start: "top 80%",
-            toggleActions: "play none none none",
-          },
-        }
-      );
-    }
-  });
-}, []);
+    gsap.fromTo(
+      formRef.current,
+      { opacity: 0, y: 50 },
+      { opacity: 1, y: 0, duration: 2 }
+    );
 
-
-
+    gsap.fromTo(
+      socialIconsRef.current,
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 2,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: socialIconsRef.current,
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
+      }
+    );
+  }, []);
 
   useEffect(() => {
     if (selectedService) {

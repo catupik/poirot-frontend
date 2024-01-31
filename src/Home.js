@@ -1,15 +1,61 @@
 import { useNavigate } from "react-router-dom";
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 function Home() {
   const navigate = useNavigate();
+  const imageRef = useRef(null);
+  const textRef = useRef(null);
+  const scrollSectionsRef = useRef([]);
+  scrollSectionsRef.current = [];
+
+  const addToRefs = (el) => {
+    if (el && !scrollSectionsRef.current.includes(el)) {
+      scrollSectionsRef.current.push(el);
+    }
+  };
+
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    
+    
+    
+    gsap.fromTo(imageRef.current, { opacity: 0, y: -50 }, { opacity: 1, y: 0, duration: 2 });
+    gsap.fromTo(textRef.current, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 2 });
+
+   
+    scrollSectionsRef.current.forEach((el) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    });
+
+   
+  }, []);
+
   return (
     <div className="about-container">
       <div className="about-section">
         <div className="poirot">
-          <img src="/poirot/poirot.jpeg" alt="poirot" />
+          <img ref={imageRef} src="/poirot/poirot.jpeg" alt="poirot" />
         </div>
 
-        <p>
+        <p  ref={textRef}>
           Bonjour, mes chers amis et collègues respectés,
           <br />
           <br />
@@ -36,11 +82,11 @@ function Home() {
         </p>
       </div>
 
-      <div className="whyMe">
-        <h2>Why Me?</h2>
+      <div className="whyMe" >
+        <h2 ref={addToRefs}>Why Me?</h2>
         <div className="allWhy">
-          <div  className="reasonWhy">
-            <div className="reason">
+          <div  className="reasonWhy" ref={addToRefs}>
+            <div className="reason" >
               <img
                 className="icon-mousetach"
                 src="/poirot/mousetach.png"
@@ -59,7 +105,7 @@ function Home() {
             </p>
           </div>
 
-          <div className="reasonWhy">
+          <div className="reasonWhy" ref={addToRefs}>
             <div className="reason">
               <img
                 className="icon-mousetach"
@@ -78,7 +124,7 @@ function Home() {
             </p>
           </div>
 
-          <div className="reasonWhy">
+          <div className="reasonWhy" ref={addToRefs}>
             <div className="reason">
               <img
                 className="icon-mousetach"
@@ -96,7 +142,7 @@ function Home() {
             </p>
           </div>
 
-          <div className="reasonWhy">
+          <div className="reasonWhy" ref={addToRefs}>
             <div className="reason">
               <img
                 className="icon-mousetach"
@@ -115,7 +161,7 @@ function Home() {
             </p>
           </div>
 
-          <div className="reasonWhy">
+          <div className="reasonWhy" ref={addToRefs}>
             <div className="reason">
               <img
                 className="icon-mousetach"
@@ -133,7 +179,7 @@ function Home() {
             </p>
           </div>
 
-          <div className="reasonWhy">
+          <div className="reasonWhy" ref={addToRefs}>
             <div className="reason">
               <img
                 className="icon-mousetach"
@@ -152,7 +198,7 @@ function Home() {
             </p>
           </div>
 
-          <div>
+          <div ref={addToRefs}>
             <h3 className="conclusion">
               By choosing me, Hercule Poirot, you choose a detective with an
               impeccable reputation and unsurpassed mastery. Together, we can
@@ -162,13 +208,13 @@ function Home() {
           </div>
         </div>
       </div>
-      <div className="contactme">
+      <div className="contactme" ref={addToRefs}>
       <button className="btn" onClick={() => navigate("/contact")}>
             Contact me
           </button>
           </div>
 
-          <div className="social">
+          <div className="social" ref={addToRefs}>
           <a
             href="https://www.facebook.com/"
             target="_blank"
