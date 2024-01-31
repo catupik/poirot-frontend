@@ -131,7 +131,7 @@ function Account() {
           </div>
 
           <div className="account-container">
-            <h2 >Purchase History</h2>
+            <h2 className="purchhistory">Purchase History</h2>
             {purchaseHistory.length > 0 ? (
               purchaseHistory.map((purchase) => (
                 <div ref={addToRefs}>
