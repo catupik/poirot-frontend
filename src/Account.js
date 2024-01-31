@@ -13,38 +13,45 @@ function Account() {
   const [purchaseHistory, setPurchaseHistory] = useState([]);
   const MY_URL = "https://poirot-m4bt.onrender.com";
 
-  const userInfoRef = useRef(null);
-  const purchaseHistoryRef = useRef(null);
-  const messagesRef = useRef(null);
+  const firstSectionRef = useRef(null);
+  const scrollSectionsRef = useRef([]);
+  scrollSectionsRef.current = [];
+
+  const addToRefs = (el) => {
+    if (el && !scrollSectionsRef.current.includes(el)) {
+      scrollSectionsRef.current.push(el);
+    }
+  };
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    if (userInfoRef.current) {
-      gsap.fromTo(userInfoRef.current, { opacity: 0 }, { opacity: 1, duration: 2 });
+    
+    if (firstSectionRef.current) {
+      gsap.fromTo(firstSectionRef.current, { opacity: 0 }, { opacity: 1, duration: 2 });
     }
 
-
-    [purchaseHistoryRef, messagesRef].forEach(ref => {
-      if (ref.current) {
-        gsap.fromTo(
-          ref.current,
-          { opacity: 0, y: 30 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 2,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: ref.current,
-              start: "top 80%",
-              toggleActions: "play none none none",
-            },
-          }
-        );
-      }
+    
+    scrollSectionsRef.current.forEach((el) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
     });
   }, []);
+
+    
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -104,7 +111,7 @@ function Account() {
   return (
     <div className="account-container">
       {isAuthenticated && (
-        <div className="accInfo" ref={userInfoRef}>
+        <div className="accInfo" ref={firstSectionRef}>
           <p className="user-info">
             <strong>User name: </strong>
             {user.nickname}
@@ -125,10 +132,10 @@ function Account() {
           </div>
 
           <div className="account-container">
-            <h2 ref={purchaseHistoryRef}>Purchase History</h2>
+            <h2 >Purchase History</h2>
             {purchaseHistory.length > 0 ? (
               purchaseHistory.map((purchase) => (
-                <div ref={purchaseHistoryRef}>
+                <div ref={addToRefs}>
                   <Purchase purchase={purchase} />
                 </div>
                
@@ -141,8 +148,8 @@ function Account() {
       )}
       {isAuthenticated && user?.email === "poirot@detective.com" && (
         <div>
-          <h2 className="messages" ref={messagesRef}>Messages:</h2>
-          <ul className="messages-list" ref={messagesRef}>
+          <h2 className="messages" ref={addToRefs}>Messages:</h2>
+          <ul className="messages-list" ref={addToRefs}>
             {messages.map((msg) => (
               <div key={msg._id}>
                 <li>
@@ -186,7 +193,7 @@ function Account() {
         </div>
       )}
       {!isAuthenticated && (
-        <div>
+        <div ref={firstSectionRef}>
           <h2 className="cart-title">Log in to the system</h2>
           {!isAuthenticated && (
             <div className="login">
