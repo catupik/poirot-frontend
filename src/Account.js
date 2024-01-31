@@ -193,7 +193,7 @@ function Account() {
       )}
       {!isAuthenticated && (
         <div ref={firstSectionRef}>
-          <div className="loginsys">
+          <div >
             <h3 className="login">Log in to the system</h3>
           </div>
          
