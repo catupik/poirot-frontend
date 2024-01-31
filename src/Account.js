@@ -1,8 +1,9 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useState, useEffect } from "react";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Purchase from "./Purchase";
-
-
 
 function Account() {
   const { isAuthenticated, user, loginWithRedirect, logout } = useAuth0();
@@ -10,7 +11,40 @@ function Account() {
   // eslint-disable-next-line
   const [userId, setUserId] = useState(null);
   const [purchaseHistory, setPurchaseHistory] = useState([]);
-  const MY_URL = 'https://poirot-m4bt.onrender.com'
+  const MY_URL = "https://poirot-m4bt.onrender.com";
+
+  const userInfoRef = useRef(null);
+  const purchaseHistoryRef = useRef(null);
+  const messagesRef = useRef(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    if (userInfoRef.current) {
+      gsap.fromTo(userInfoRef.current, { opacity: 0 }, { opacity: 1, duration: 2 });
+    }
+
+
+    [purchaseHistoryRef, messagesRef].forEach(ref => {
+      if (ref.current) {
+        gsap.fromTo(
+          ref.current,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 2,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: ref.current,
+              start: "top 80%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      }
+    });
+  }, []);
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -35,9 +69,11 @@ function Account() {
     const fetchPurchaseHistory = async () => {
       if (isAuthenticated) {
         try {
-          const response = await fetch(`${MY_URL}/purchase-history/${user.sub}`);
+          const response = await fetch(
+            `${MY_URL}/purchase-history/${user.sub}`
+          );
           if (!response.ok) {
-            throw new Error('Error fetching purchase history');
+            throw new Error("Error fetching purchase history");
           }
           const data = await response.json();
           setPurchaseHistory(data);
@@ -49,7 +85,6 @@ function Account() {
 
     fetchPurchaseHistory();
   }, [isAuthenticated, user]);
-
 
   const deletemessage = async (id) => {
     try {
@@ -66,12 +101,10 @@ function Account() {
     }
   };
 
-  
-
   return (
     <div className="account-container">
       {isAuthenticated && (
-        <div className="accInfo">
+        <div className="accInfo" ref={userInfoRef}>
           <p className="user-info">
             <strong>User name: </strong>
             {user.nickname}
@@ -82,29 +115,34 @@ function Account() {
           </p>
           {/* <p className="user-info"><strong>UserId:</strong> {user.sub}</p> */}
           <img src={user.picture} alt="user-pic" className="user-pic" />
-        <div className="logout">
-          <button onClick={() => logout({ returnTo: window.location.origin })} className="btn logoutbtn">
-            Log Out
-          </button>
+          <div className="logout">
+            <button
+              onClick={() => logout({ returnTo: window.location.origin })}
+              className="btn logoutbtn"
+            >
+              Log Out
+            </button>
           </div>
 
-
           <div className="account-container">
-          <h2>Purchase History</h2>
-          {purchaseHistory.length > 0 ? (
-            purchaseHistory.map((purchase) => <Purchase purchase={purchase}/>)
-          ) : (
-            <p>No purchase history available.</p>
-          )}
-        </div>
-
-
+            <h2 ref={purchaseHistoryRef}>Purchase History</h2>
+            {purchaseHistory.length > 0 ? (
+              purchaseHistory.map((purchase) => (
+                <div ref={purchaseHistoryRef}>
+                  <Purchase purchase={purchase} />
+                </div>
+               
+              ))
+            ) : (
+              <p>No purchase history available.</p>
+            )}
+          </div>
         </div>
       )}
       {isAuthenticated && user?.email === "poirot@detective.com" && (
         <div>
-          <h2 className="messages">Messages:</h2>
-          <ul className="messages-list">
+          <h2 className="messages" ref={messagesRef}>Messages:</h2>
+          <ul className="messages-list" ref={messagesRef}>
             {messages.map((msg) => (
               <div key={msg._id}>
                 <li>
@@ -150,16 +188,16 @@ function Account() {
       {!isAuthenticated && (
         <div>
           <h2 className="cart-title">Log in to the system</h2>
-          {!isAuthenticated&& (
-
+          {!isAuthenticated && (
             <div className="login">
-            <button className='btn loginbtn' onClick={() => loginWithRedirect()}>
-            Log In
-          </button>
-          </div>
+              <button
+                className="btn loginbtn"
+                onClick={() => loginWithRedirect()}
+              >
+                Log In
+              </button>
+            </div>
           )}
-
-          
         </div>
       )}
     </div>
