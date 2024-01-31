@@ -11,41 +11,60 @@ const AllItems = () => {
   const selectedItemsCategory = useSelector(getItemsSelectedCategory);
   
   const introTextRef = useRef(null);
-  const categoriesAndItemsRef = useRef([]);
-  categoriesAndItemsRef.current = [];
+  const categoriesRef = useRef(null); 
+  const itemsRefs = useRef([]);
 
-  const addToRefs = (el) => {
-    if (el && !categoriesAndItemsRef.current.includes(el)) {
-      categoriesAndItemsRef.current.push(el);
-    }
-  };
-
-  
+ 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Немедленная анимация для intro-text
+   
     if (introTextRef.current) {
-      gsap.fromTo(introTextRef.current, { opacity: 0 }, { opacity: 1, duration: 2 });
+      gsap.fromTo(
+        introTextRef.current,
+        { opacity: 0, y: -50 },
+        { opacity: 1, y: 0, duration: 2 }
+      );
     }
 
-    // Анимация для AllItemsCategories и элементов списка товаров при скролле
-    categoriesAndItemsRef.current.forEach((el) => {
+   
+    if (categoriesRef.current) {
       gsap.fromTo(
-        el,
+        categoriesRef.current,
         { opacity: 0, y: 30 },
         {
           opacity: 1,
-          
+          y: 0,
           duration: 2,
           ease: "power2.out",
           scrollTrigger: {
-            trigger: el,
+            trigger: categoriesRef.current,
             start: "top 80%",
             toggleActions: "play none none none",
           },
         }
       );
+    }
+
+    
+    itemsRefs.current.forEach(el => {
+      if (el.current) {
+        gsap.fromTo(
+          el.current,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 2,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: el.current,
+              start: "top 80%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      }
     });
   }, []);
 
@@ -59,7 +78,9 @@ const AllItems = () => {
         of my thrilling investigations.
       </p>
 
-      <AllItemsCategories ref={addToRefs}/>
+      <div ref={categoriesRef}>
+        <AllItemsCategories />
+      </div>
 
       <div className="allServices">
         {dataItems
@@ -68,8 +89,8 @@ const AllItems = () => {
             return item.category === selectedItemsCategory;
           })
           .map((item) => (
-            <div  ref={addToRefs}>
-                 <Item key={item.id} item={item} />
+            <div key={item.id} ref={el => itemsRefs.current.push({ id: item.id, current: el })}>
+              <Item item={item} />
             </div>
            
           ))}
