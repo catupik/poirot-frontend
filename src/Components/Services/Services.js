@@ -108,8 +108,8 @@ function Services() {
             return selectedCategory === service.category;
           })
           .map((service) => (
-            <div ref={addToRefs}>
-            <Service key={service.id} service={service} />
+            <div ref={addToRefs} key={service.id}>
+            <Service  service={service} />
             </div>
           ))}
       </div>

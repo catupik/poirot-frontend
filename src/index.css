@@ -25,8 +25,8 @@ body{
 
   /* NAVIGATION */
   .nav .Link, .nav .poirotLink, .nav .motto {
-    opacity: 0;
-  }
+  opacity: 0;
+}
   .nav{
     display: flex;
     justify-content: space-around;
@@ -978,7 +978,7 @@ option {
   margin-right: 20px; 
 }
 .purchase-date, .account-container h2{
-  margin-left: 1.6rem;
+  margin-left: 1rem;
 }
 
 /* FOOTER */
@@ -1133,6 +1133,9 @@ option {
     padding: 10px;
     
   }
+.loginsys h2{
+  text-align: center;
+}
  .logout {
   margin-left: 0rem;
  }
@@ -1140,10 +1143,7 @@ option {
     
     width: 30%
   }
-  .cart-title{
-    margin-top: 3rem;
-   text-align: center;
-  }
+  
   .near-picture {
     margin-bottom: 1rem;
   }
@@ -1312,7 +1312,7 @@ option {
   border-radius: 10px;
   margin-right: 0.5rem; 
 }
-.purchase-date, .account-container h2{
+.purchase-date{
   margin-left: 2.3rem;
 }
 

@@ -193,7 +193,10 @@ function Account() {
       )}
       {!isAuthenticated && (
         <div ref={firstSectionRef}>
-          <h2 className="cart-title">Log in to the system</h2>
+          <div className="loginsys">
+            <h2 className="login">Log in to the system</h2>
+          </div>
+         
           {!isAuthenticated && (
             <div className="login">
               <button
